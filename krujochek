@@ -1,0 +1,15 @@
+#include <iostream>
+#include <iomanip>
+#define _USE_MATH_DEFINES
+#include <math.h>
+using namespace std;
+
+int main()
+{
+	double r;
+	cin >> r;
+	long double p = 2 * r * M_PI;
+	long double PI = acos(-1.0);
+	long double s = PI * r * r;
+	cout << p << "\n" << s;
+}
