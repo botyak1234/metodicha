@@ -1,0 +1,13 @@
+#include <iostream>
+#include <iomanip>
+#define _USE_MATH_DEFINES
+#include <math.h>
+using namespace std;
+
+int main()
+{
+	int x;
+	cin >> x;
+	double a = cosh(pow(x, -7)) + log10(2 * x) / log10(7 / 8);
+	cout << int(a) << '\n' << a - int(a);
+}
