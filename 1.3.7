@@ -9,10 +9,13 @@ int main()
 	cin >> x;
 	int x1 = x % 10;
 	int x2 = x / 10;
-	if (x1 > x2) {
-		cout << x1;
-	}
-	else {
-		cout << x2;
-	}
+	x1 <= x2 ? cout << "first" : cout << "second";
 }
+
+
+
+//ПРИМЕР 1 21 вывод: first
+
+//ПРИМЕР 2 37 вывод: second
+
+//ПРИМЕР 3 99 вывод: first
