@@ -1,11 +1,23 @@
 #include <iostream>
-#include <math.h>
+#include <cmath>
+#include <iomanip>
 using namespace std;
 
 int main()
 {
-	float x;
+	long double x;
 	cin >> x;
-	cout << abs(x * x * x - x * x) - 7 * x / (x * x * x - 15 * x);
+	cout << fixed << setprecision(10) << abs(x * x * x - x * x) - 7. * x / (x * x * x - 15 * x);
 }
+
+
+
+
+//ПРИМЕР 1  x = 1 вывод: 0.5
+
+
+//ПРИМЕР 2  x = 1000 вывод: 998999999 
+
+
+//ПРИМЕР 3  x = 0.0001 вывод: 0.4666666770
 
