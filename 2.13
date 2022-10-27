@@ -1,0 +1,31 @@
+#include <iostream>
+#include <cmath>
+#include <iomanip>
+#include <windows.h>
+using namespace std;
+
+
+void f(int &a)
+{
+	a = a % 10 * 100 + a / 10 % 10 * 10 + a / 100;
+}
+
+
+
+
+
+int main()
+{
+	int a;
+	cin >> a;
+	f(a);
+	cout << a << endl;
+}
+
+//123 - 321
+
+
+//788 - 887
+
+
+//613 - 316
