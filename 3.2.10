@@ -1,0 +1,108 @@
+#include <iostream>
+#include <cmath>
+#include <iomanip>
+#include <windows.h>
+using namespace std;
+
+
+
+int main()
+{
+	SetConsoleCP(1251);
+	SetConsoleOutputCP(1251);
+	int x;
+	cin >> x;
+	switch (x)
+	{
+	case 1948: cout << "Год крысы"; break;
+	case 1960: cout << "Год крысы"; break;
+	case 1972: cout << "Год крысы"; break;
+	case 1984: cout << "Год крысы"; break;
+	case 1996: cout << "Год крысы"; break;
+	case 2008: cout << "Год крысы"; break;
+	case 2020: cout << "Год крысы"; break;
+	case 1949: cout << "Год быка"; break;
+	case 1961: cout << "Год быка"; break;
+	case 1973: cout << "Год быка"; break;
+	case 1985: cout << "Год быка"; break;
+	case 1997: cout << "Год быка"; break;
+	case 2009: cout << "Год быка"; break;
+	case 2021: cout << "Год быка"; break;
+	case 1950: cout << "Год тигра"; break;
+	case 1962: cout << "Год тигра"; break;
+	case 1974: cout << "Год тигра"; break;
+	case 1986: cout << "Год тигра"; break;
+	case 1998: cout << "Год тигра"; break;
+	case 2010: cout << "Год тигра"; break;
+	case 2022: cout << "Год тигра"; break;
+	case 1951: cout << "Год кролика"; break;
+	case 1963: cout << "Год кролика"; break;
+	case 1975: cout << "Год кролика"; break;
+	case 1987: cout << "Год кролика"; break;
+	case 1999: cout << "Год кролика"; break;
+	case 2011: cout << "Год кролика"; break;
+	case 2023: cout << "Год кролика"; break;
+	case 1952: cout << "Год дракона"; break;
+	case 1964: cout << "Год дракона"; break;
+	case 1976: cout << "Год дракона"; break;
+	case 1988: cout << "Год дракона"; break;
+	case 2000: cout << "Год дракона"; break;
+	case 2012: cout << "Год дракона"; break;
+	case 2024: cout << "Год дракона"; break;
+	case 1953: cout << "Год змеи"; break;
+	case 1965: cout << "Год змеи"; break;
+	case 1977: cout << "Год змеи"; break;
+	case 1989: cout << "Год змеи"; break;
+	case 2001: cout << "Год змеи"; break;
+	case 2013: cout << "Год змеи"; break;
+	case 2025: cout << "Год змеи"; break;
+	case 1954: cout << "Год лошади"; break;
+	case 1966: cout << "Год лошади"; break;
+	case 1978: cout << "Год лошади"; break;
+	case 1990: cout << "Год лошади"; break;
+	case 2002: cout << "Год лошади"; break;
+	case 2014: cout << "Год лошади"; break;
+	case 2026: cout << "Год лошади"; break;
+	case 1955: cout << "Год овцы"; break;
+	case 1967: cout << "Год овцы"; break;
+	case 1979: cout << "Год овцы"; break;
+	case 1991: cout << "Год овцы"; break;
+	case 2003: cout << "Год овцы"; break;
+	case 2015: cout << "Год овцы"; break;
+	case 2027: cout << "Год овцы"; break;
+	case 1956: cout << "Год обезьяны"; break;
+	case 1968: cout << "Год обезьяны"; break;
+	case 1980: cout << "Год обезьяны"; break;
+	case 1992: cout << "Год обезьяны"; break;
+	case 2004: cout << "Год обезьяны"; break;
+	case 2016: cout << "Год обезьяны"; break;
+	case 2028: cout << "Год обезьяны"; break;
+	case 1957: cout << "Год петуха"; break;
+	case 1969: cout << "Год петуха"; break;
+	case 1981: cout << "Год петуха"; break;
+	case 1993: cout << "Год петуха"; break;
+	case 2005: cout << "Год петуха"; break;
+	case 2017: cout << "Год петуха"; break;
+	case 2029: cout << "Год петуха"; break;
+	case 1958: cout << "Год собаки"; break;
+	case 1970: cout << "Год собаки"; break;
+	case 1982: cout << "Год собаки"; break;
+	case 1994: cout << "Год собаки"; break;
+	case 2006: cout << "Год собаки"; break;
+	case 2018: cout << "Год собаки"; break;
+	case 2030: cout << "Год собаки"; break;
+	case 1959: cout << "Год свиньи"; break;
+	case 1971: cout << "Год свиньи"; break;
+	case 1983: cout << "Год свиньи"; break;
+	case 1995: cout << "Год свиньи"; break;
+	case 2007: cout << "Год свиньи"; break;
+	case 2019: cout << "Год свиньи"; break;
+	case 2031: cout << "Год свиньи"; break;
+	default: cout << "Слиииииишком давно, либо слишком в будущем"; break;
+	}
+}
+
+
+//1983 - год свиньи
+//1971 - год овцы
+//2004 - год обезьяны
