@@ -1,0 +1,40 @@
+#include <iostream>
+#include <cmath>
+#include <iomanip>
+#include <windows.h>
+using namespace std;
+
+
+
+int main()
+{
+	SetConsoleCP(1251);
+	SetConsoleOutputCP(1251);
+	double itog = 0;
+	for (int x; x <= 12; x += 2)
+	{
+		itog = x * 25.4 / 10;
+		cout << x << " дюймов - " << itog << " сантиметров" << endl;
+	}
+}
+
+/*int x;
+	double itog;
+	itog = 0;
+	x = 2;
+	while (x <= 12)
+	{
+		itog = x * 25.4 / 10;
+		cout << x << " дюймов - " << itog << " сантиметров" << endl;
+		x += 2;
+	}	*/
+
+
+	/*int x = 2;
+		double itog = 0;
+		do
+		{
+			itog = x * 25.4 / 10;
+			cout << x << " дюймов - " << itog << " сантиметров" << endl;
+			x += 2;
+		} while (x <= 12);*/
