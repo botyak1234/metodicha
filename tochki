@@ -15,5 +15,5 @@ int main()
 	double s3 = g * m2 * m3 / (r2 * r3);
 	double summ = s1 + s2 + s3;
 	cout << max(s1, s2, s3) << '\n';
-	cout << summ - max(s1, s2, s3);
+	cout << summ - max(s1, s2, s3) - min(s1, s2, s3);
 } 
