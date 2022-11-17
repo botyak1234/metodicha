@@ -1,0 +1,18 @@
+#include <iostream>
+#include <cmath>
+#include <iomanip>
+using namespace std;
+
+void boooooolshe(double &a, double b)
+{
+	a += b;
+}
+
+
+int main()
+{
+	double x, y;
+	cin >> x >> y;
+	boooooolshe(x, y);
+	cout << x;
+} 
