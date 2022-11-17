@@ -1,0 +1,19 @@
+#include <iostream>
+#include <cmath>
+#include <iomanip>
+using namespace std;
+
+
+
+int main()
+{
+	double m1, m2, m3, r1, r2, r3;
+	long double g = 6.67 * pow(10, -11);
+	cin >> m1 >> m2 >> m3 >> r1 >> r2 >> r3;
+	double s1 = g * m1 * m2 / (r1 * r1);
+	double s2 = g * m1 * m3 / (r1 * r3);
+	double s3 = g * m2 * m3 / (r2 * r3);
+	double summ = s1 + s2 + s3;
+	cout << max(s1, s2, s3) << '\n';
+	cout << summ - max(s1, s2, s3);
+} 
