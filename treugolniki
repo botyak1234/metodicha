@@ -1,0 +1,29 @@
+#include <iostream>
+#include <cmath>
+#include <iomanip>
+using namespace std;
+
+double storona(double s)
+{
+	double a = sqrt(4 * s / sqrt(3));
+	return a;
+}
+
+
+double gip(double x)
+{
+	double st = sqrt(2 * x * x);
+	return st;
+}
+
+
+
+int main()
+{
+	double ss;
+	cin >> ss;
+	double aa = storona(ss);
+	double stt = gip(aa);
+	cout << aa << '\n';
+	cout << stt << '\n';
+}
