@@ -12,7 +12,7 @@ int main()
 	SetConsoleOutputCP(1251);
 	double x, y;
 	cin >> x >> y;
-	if (x == y || y == 0 && x >= 0 && x <= 70 || x == 70 && y >= 0 && y <= 70) cout << "На границе";
+	if (x == y && x >= 0 && y >= 0 || y == 0 && x >= 0 && x <= 70 || x == 70 && y >= 0 && y <= 70) cout << "На границе";
 	else if (x < 0 || x > 70 || y < 0 || y > x) cout << "вне границы";
 	else cout << "внутри";
 }
