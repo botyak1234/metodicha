@@ -4,11 +4,11 @@
 #include <windows.h>
 using namespace std;
 
-void f(double &a, int &b, int &fl)
+void f(double& a, int& b, int& fl)
 {
 	if (b * b + 2 * b + 1 > 0)
 	{
-		a = (3. * b + 4)/sqrt(b * b + 2 * b + 1);
+		a = (3. * b + 4) / sqrt(b * b + 2 * b + 1);
 	}
 	else fl = 0;
 }
@@ -18,22 +18,23 @@ int main()
 {
 	SetConsoleCP(1251);
 	SetConsoleOutputCP(1251);
-	long aa, bb, h;
+	double aa, bb, h;
 	int flag;
 	double y = 0;
+	double eps = 1e-12;
 	cin >> aa >> bb >> h;
-	for (int i = aa; i <= bb; i += h )
+	for (int i = aa; i <= bb + eps; i += h)
 	{
 		flag = 1;
 		f(y, i, flag);
-		if (!flag) cout << i <<"  Функция не определена" << endl;
+		if (!flag) cout << i << "  Функция не определена" << endl;
 		else cout << i << "  " << y << endl;
 	}
 }
 
 /*
-1.   
-ввод:    
+1.
+ввод:
 -10 0 1
 вывод:
 -10 -2.88889
@@ -87,3 +88,4 @@ int main()
 91  3.01087
 96  3.01031
 */
+
