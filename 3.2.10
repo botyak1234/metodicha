@@ -10,50 +10,26 @@ int main()
 {
 	SetConsoleCP(1251);
 	SetConsoleOutputCP(1251);
-	int x;
-	cin >> x;
-	int kris = 1948;
-	int bik = 1949;
-	int tigr = 1950;
-	int krol = 1951;
-	int drag = 1952;
-	int zmei = 1953;
-	int horse = 1954;
-	int ovc = 1955;
-	int monkey = 1956;
-	int pet = 1957;
-	int dog = 1958;
-	int pig = 1959;
-	if ((x - kris) % 12 == 0) x = kris;
-	else if (abs(x - bik) % 12 == 0) x = bik;
-	else if (abs(x - tigr) % 12 == 0) x = tigr;
-	else if (abs(x - krol) % 12 == 0) x = krol;
-	else if (abs(x - drag) % 12 == 0) x = drag;
-	else if (abs(x - zmei) % 12 == 0) x = zmei;
-	else if (abs(x - horse) % 12 == 0) x = horse;
-	else if (abs(x - ovc) % 12 == 0) x = ovc;
-	else if (abs(x - monkey) % 12 == 0) x = monkey;
-	else if (abs(x - pet) % 12 == 0) x = pet;
-	else if (abs(x - dog) % 12 == 0) x = dog;
-	else x = pig;
+	int god;
+	cin >> god;
+	int x = god % 12;
 	switch (x)
 	{
-		case 1948: cout << "Год крысы"; break;
-		case 1949: cout << "Год быка"; break;
-		case 1950: cout << "Год тигра"; break;
-		case 1951: cout << "Год кролика"; break;
-		case 1952: cout << "Год дракона"; break;
-		case 1953: cout << "Год змеи"; break;
-		case 1954: cout << "Год лошади"; break;
-		case 1955: cout << "Год овцы"; break;
-		case 1956: cout << "Год обезьяны"; break;
-		case 1957: cout << "Год петуха"; break;
-		case 1958: cout << "Год собаки"; break;
-		case 1959: cout << "Год свиньи"; break;
+	case 4: cout << "Год крысы"; break;
+	case 5: cout << "Год быка"; break;
+	case 6: cout << "Год тигра"; break;
+	case 7: cout << "Год кролика"; break;
+	case 8: cout << "Год дракона"; break;
+	case 9: cout << "Год змеи"; break;
+	case 10: cout << "Год лошади"; break;
+	case 11: cout << "Год овцы"; break;
+	case 0: cout << "Год обезьяны"; break;
+	case 1: cout << "Год петуха"; break;
+	case 2: cout << "Год собаки"; break;
+	case 3: cout << "Год свиньи"; break;
 	}
 
 }
 //1983 - год свиньи
 //1971 - год овцы
 //2004 - год обезьяны
-
