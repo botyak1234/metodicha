@@ -15,8 +15,7 @@ int main()
 
 	for (long i = 0; i < n; i++)
 	{
-		if (i % 2 == 0)
-			s += pow(i + 1, 3);
+		if (i % 2 == 0) s += pow(i + 1, 3);
 		else s += -1 * pow(i + 1, 3);
 	}
 	cout << s;
