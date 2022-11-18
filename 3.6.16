@@ -12,7 +12,7 @@ int main()
 	double y = 0;
 	double eps = 1e-12;
 	cin >> aa >> bb >> h;
-	for (long double i = aa; i <= bb + eps; i += h)
+	for (long double i = aa; i -bb <= eps; i += h)
 	{
 		if (i > 0) cout << i << ' ' << i << '\n';
 		if (i >= -1 && i <= 0) cout << i << ' ' << 0 << '\n';
