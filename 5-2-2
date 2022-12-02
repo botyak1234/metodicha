@@ -1,0 +1,22 @@
+#include <iostream>
+#include <cmath>
+#include <iomanip>
+#include <vector>
+using namespace std;
+
+
+int main()
+{
+	double sum = 0;
+	int k;
+	cin >> k;
+	int step = 2;
+	int fac = 1;
+	for (int n = 1; n <= k; n++)
+	{
+		fac *= n;
+		sum += step  * fac / (double)pow(n, 2);
+		step *= 2;
+	}
+	cout << sum;
+}
