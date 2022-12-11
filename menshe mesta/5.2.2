@@ -1,0 +1,26 @@
+#include <iostream>
+#include <cmath>
+#include <iomanip>
+#include <windows.h>
+#include <vector>
+#include <string>
+using namespace std;
+
+
+
+int main()
+{
+	long k; cin >> k;
+	double x; cin >> x;
+	long n = 1;
+	long step = 2;
+	long fac = 1;
+	long sum = 0;
+	for (n; n <= k; n++)
+	{
+		fac *= 1;
+		sum += (double)(step * fac) / pow(n, 2);
+		step *= 2;
+	}
+	cout << sum;
+}
