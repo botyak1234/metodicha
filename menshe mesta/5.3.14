@@ -1,0 +1,28 @@
+#include <iostream>
+#include <cmath>
+#include <iomanip>
+#include <windows.h>
+#include <vector>
+#include <string>
+using namespace std;
+
+
+
+int main()
+{
+	long step = -5;
+	long fac = 1;
+	double eps; cin >> eps;
+	double chislo = -1;
+	double sum = -1;
+	long i = 2;
+	while (true)
+	{
+		step *= (-5) * (-5);
+		fac *= (2 * i - 1)*(2 * i - 2);
+		chislo = (double)step / (5 * fac);
+		if (abs(chislo) < eps) break;
+		else sum += chislo;
+	}
+	cout << sum;
+}
