@@ -1,0 +1,34 @@
+#include <iostream>
+#include <cmath>
+#include <iomanip>
+#include <windows.h>
+#include <vector>
+#include <string>
+using namespace std;
+
+
+
+int main()
+{
+	double h = 0.1;
+	double a = 0.05;
+	double b = 0.095;
+	double eps; cin >> eps;
+	for (double x = 0.05; x - b <= eps; x += h)
+	{
+		long c = 3;
+		long proiz = c;
+		long step = x;
+		long count = 0;
+		double sum = 1;
+		while (step / proiz - eps > 0)
+		{
+			sum += step / proiz;
+			step *= x;
+			c += 2;
+			proiz *= c;
+			count++;
+		}
+		cout << x << sum << count << endl;
+	}
+}
