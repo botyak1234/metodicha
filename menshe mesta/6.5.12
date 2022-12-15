@@ -1,0 +1,38 @@
+
+#include <iostream>
+#include <cmath>
+#include <iomanip>
+#include <windows.h>
+#include <vector>
+#include <string>
+using namespace std;
+
+
+
+int main()
+{
+	int n = 0; cin >> n;
+	long *a = new long [n];
+	long* b= new long[n];
+		int c = 0;
+	for (int i = 0; i < n; i++)
+	{
+		cin >> a[i];
+	}
+	for (int i = 0; i < n; i++)
+	{
+		for (int j = i; j < n; j++)
+		{
+			if (a[i] == a[j] && i != j)
+			{
+				for (int k = j; k < n - 1; k++)
+				{
+					a[k] = a[k + 1];
+					j--;
+				}
+				n--;
+			}
+		}
+	}
+	for (int i = 0; i < n; i++) cout << a[i] << ' ';
+}
