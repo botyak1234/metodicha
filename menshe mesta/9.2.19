@@ -18,16 +18,18 @@ int main()
 	string s;
 	int mxdlina = 0;
 	string symb; cin >> symb;
-	while (in.peek()!=EOF)
+	string pred;
+	string tek;
+	in >> s;
+	cout << s << '*' << endl;
+	pred = s;
+	while (in.peek() != EOF)
 	{
-		getline(in, s);
-		string symb1, symb2;
-		for (int i = 1; i < size(s); i++)
-		{
-			symb1.insert(0, 1, s[i - 1]);
-			symb2.insert(0, 1, s[i]);
-			if (symb1 == symb) out << symb2 << ' ';
-		}
+		in >> s;
+		cout << s  << '*' << endl;
+		tek = s;
+		cout << pred << ' ' << tek << endl;
+		if (pred == symb) out << tek << ' ';
+		pred = tek;
 	}
-	out << mxdlina;
-} 
+}
