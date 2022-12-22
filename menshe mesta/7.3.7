@@ -13,20 +13,22 @@ using namespace std;
 
 int main()
 {
-	int c = 0;
+
 	string str;
 	int flag = 1;
 	getline(cin, str);
 	string bukva; cin >> bukva;
-	for (int i = 0; i < size(str); i++)
+	for (int i = 1; i < size(str); i++)
 	{
-		string symbol; symbol.insert(0, 1, str[i]);
-		if (symbol == bukva && str[i - 1] == ' ')
+		string symbol; symbol = str[i];
+		string symbol1; symbol1 = str[i - 1];
+		if (symbol == bukva && symbol1 == " ")
 		{
-			while (str[i] != ' ')
+			while (symbol != " ")
 			{
-				cout << str[i];
+				cout << symbol;
 				i++;
+				symbol = str[i];
 			}
 			cout << endl;
 		}
