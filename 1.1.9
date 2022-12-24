@@ -2,12 +2,12 @@
 #include <cmath>
 #include <iomanip>
 using namespace std;
-
+//выше было произведено подключение бибиотек потоков ввода и вывода данных, математических функций и манипуляций над потоком вывода
 int main()
 {
-	long double x;
-	cin >> x;
-	cout << fixed << setprecision(10) << abs(x * x * x - x * x) - 7. * x / (x * x * x - 15 * x);
+	long double x; //объяявление переменной
+	cin >> x;//ввод переменной
+	cout << fixed << setprecision(10) << abs(x * x * x - x * x) - 7. * x / (x * x * x - 15 * x);//вывод ответа с 10 знаками после запятой
 }
 
 
