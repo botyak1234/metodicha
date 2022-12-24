@@ -4,7 +4,7 @@
 #include <windows.h>
 using namespace std;
 
-void f(double& a, int& b, int& fl)
+void f(double& a, int& b, int& fl) //Функция для подсчёта значения
 {
 	if (b * b + 2 * b + 1  > 1e-12)
 	{
@@ -19,9 +19,9 @@ int main()
 	SetConsoleCP(1251);
 	SetConsoleOutputCP(1251);
 	double aa, bb, h;
-	int flag;
+	int flag;//флаг для опеределения имеется ли значение функции для такого x
 	double y = 0;
-	double eps = 1e-12;
+	double eps = 1e-12;//очень маленькое число, чтобы проверить вхождения x в отрезок максимально близко к правой границе
 	cin >> aa >> bb >> h;
 	for (long double i = aa; i -bb <= eps; i += h)
 	{
