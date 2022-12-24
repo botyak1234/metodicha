@@ -12,8 +12,8 @@ int main()
 	SetConsoleOutputCP(1251);
 	int god;
 	cin >> god;
-	int x = god % 12;
-	switch (x)
+	int x = god % 12;//получение остатка года на количество животных, т.к. кажому остатку соответствует свой символ года
+	switch (x) // использование оператора switch для получения ответа
 	{
 	case 4: cout << "Год крысы"; break;
 	case 5: cout << "Год быка"; break;
