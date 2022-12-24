@@ -3,9 +3,6 @@
 #include <iomanip>
 #include <windows.h>
 using namespace std;
-
-
-
 int main()
 {
 	int b= 100;
@@ -18,3 +15,24 @@ int main()
 		cout << b << endl;
 	}
 }
+/*
+ввод:
+5
+ввыод:
+10
+20
+2
+121
+ввод:
+10
+ввывод:
+10
+20
+2
+12
+1
+11
+1
+11
+1
+*/
