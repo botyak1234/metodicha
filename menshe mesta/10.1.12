@@ -15,7 +15,7 @@ int main()
 {
 	struct point
 	{
-		int x, y;
+		double x, y;//объявление структуры множества координат точек
 	};
 	ifstream in("input.txt");
 	ofstream out("output.txt");
@@ -23,21 +23,40 @@ int main()
 	int r; in >> r;
 	point* a = new point[n];
 	int mnkolvo = 1000000;
+	int ind;
 	for (int i = 0; i < n; i++)
 	{
-		in >> a[i].x;
+		in >> a[i].x;//иницилизация полей структуры с помощью массива
 		in >> a[i].y;
 	}
-	for (int i = 0; i > n; i++)
+	for (int i = 0; i < n; i++)
 	{
 		int kolvo = 0;
 		for (int j = 0; j < n; j++)
 		{
-			if (pow((a[i].x - a[j].x), 2) + pow((a[i].y - a[j].y), 2) <= r * r && i != j) kolvo++;
+			if (pow((a[i].x - a[j].x), 2) + pow((a[i].y - a[j].y), 2) <= r * r && i != j) kolvo++;//для каждоай пары координат  смотрим количество точек
+			//которые входят в окружность и ищем наименьшее количество
 		}
-		if (kolvo < mnkolvo) mnkolvo = kolvo;
+		if (kolvo < mnkolvo)
+		{
+			mnkolvo = kolvo;
+			ind = i;
+		}
 	}
-	out << mnkolvo;
+	out << a[ind].x << ' ' << a[ind].y;
 	in.close();
 	out.close();
 }
+
+
+/*
+ввод
+5 2
+1 1
+0.5 0.5
+0.6 0.6
+2 2
+10 10
+вывод
+10 10
+*/
