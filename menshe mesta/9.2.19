@@ -18,18 +18,15 @@ int main()
 	string s;
 	int mxdlina = 0;
 	string symb; cin >> symb;
-	string pred;
+	string pred;//
 	string tek;
 	in >> s;
-	cout << s << '*' << endl;
 	pred = s;
 	while (in.peek() != EOF)
 	{
 		in >> s;
-		cout << s  << '*' << endl;
-		tek = s;
-		cout << pred << ' ' << tek << endl;
-		if (pred == symb) out << tek << ' ';
+		tek = s;//текущий символ после ввода
+		if (pred == symb) out << tek << ' ';//если предыдущий символ равен нужному, то выводим текущий
 		pred = tek;
 	}
 }
