@@ -1,0 +1,43 @@
+#include <iostream>
+#include <cmath>
+#include <iomanip>
+#include <windows.h>
+#include <algorithm>
+#include <vector>
+#include <string>
+#include <cstring>
+#include <fstream>
+using namespace std;
+
+
+
+int main()
+{
+	struct point
+	{
+		int x, y;
+	};
+	ifstream in("input.txt");
+	ofstream out("output.txt");
+	int n; in >> n;
+	int r; in >> r;
+	point* a = new point[n];
+	int mnkolvo = 1000000;
+	for (int i = 0; i < n; i++)
+	{
+		in >> a[i].x;
+		in >> a[i].y;
+	}
+	for (int i = 0; i > n; i++)
+	{
+		int kolvo = 0;
+		for (int j = 0; j < n; j++)
+		{
+			if (pow((a[i].x - a[j].x), 2) + pow((a[i].y - a[j].y), 2) <= r * r && i != j) kolvo++;
+		}
+		if (kolvo < mnkolvo) mnkolvo = kolvo;
+	}
+	out << mnkolvo;
+	in.close();
+	out.close();
+}
