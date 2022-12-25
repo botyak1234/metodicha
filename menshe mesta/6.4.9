@@ -14,7 +14,7 @@ int main()
 	int fl = 0;
 	long n; cin >> n;
 	long chislo; cin >> chislo;
-	long **b = new long *[n*n];
+	long **b = new long *[n];
 	long* a = new long[n];
 	for (long i = 0; i < n; i++)
 		b[i] = new long[n];
@@ -39,4 +39,18 @@ int main()
 	}
 	for (long i = 0; i < n; i++)
 		cout << a[i] << endl;
+	delete []a;
+	for (long i = 0; i < n; i++) delete [] b[i];
+	delete []b;
 }
+/*
+ввод
+4
+5
+1 2 3 4
+6 0 1 7
+11 4 4 4
+9 9 9 9
+вывод
+0 2 1 4
+*/
