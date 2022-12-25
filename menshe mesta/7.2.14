@@ -11,26 +11,33 @@ using namespace std;
 
 int main()
 {
-	char c2; cin >> c2;
-	string s; cin >> s;
-	string s0; cin >> s0;
-	int len = size(s0);
-	char zabyl = s[size(s) - 1];
-	int c = count(s.begin(), s.end(), c2);
-	s.insert(size(s), c*len, '1');
+	char c;//объявления символа, который нам нужен
+	string s;//объявление исходной строки
+	string s0;//объявление вставляемой строки
+	cin >> c;//ввод символа
+	cin >> s >> s0;// ввод искомой строки и вставляемой строки
+	int inds = 0;
+	int k = count(s.begin(), s.end(), c);//количество нужных символов
 	int lens = size(s);
-	for (int i = 0; i < lens; i++)
+	for (int i = 0; i < k; i++)
 	{
-		if (s[i] == c2)
-		{
-			for (int j = lens - 1; j > i + 1; j--)
-			{
-				s[j] = s[j - 1];
-			}
-			s.insert(i + 1, s0);
-		}
+		int ind = s.find(c, inds+1);//ищет нужный нам символ с позиции предыдущего +1, чтобы не искал тот же самый
+		inds = ind;
+		s.insert(ind+1, s0);//вставка после нужного символа
 	}
-	s.erase(size(s) - lens+2, lens);
-	s[lens-1] = zabyl;
 	cout << s;
 }
+/*
+ввод
+b
+abbc
+oo
+вывод
+aboobooc
+ввод
+f
+loveanime
+not
+вывод
+loveanime
+*/
