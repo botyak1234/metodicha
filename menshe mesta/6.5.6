@@ -17,7 +17,7 @@ int main()
 {
 	int n = 0; cin >> n;
 	int elem; cin >> elem;
-	long *a = new long [n+1];
+	long *a = new long [n+1];//необходим массив размером на 1 больше, т.к. после вставки количество элементов увеличится
 	long* b= new long[n];
 	int c = 0;
 	int ind;
@@ -33,11 +33,29 @@ int main()
 	}
 	for (int i = n; i > ind; i--)
 	{
-		a[i] = a[i - 1];
+		a[i] = a[i - 1];//сдвиг элементов вправо после нахождение индекса первого отрицательного
 	}
 	a[ind] = elem;
-	for (int i = 0; i < n + 1; i++)
+	if(flag)
 	{
-		cout << a[i] << ' ';
+		for (int i = 0; i < n + 1; i++)
+		{
+			cout << a[i] << ' ';
+		}
 	}
+	else cout <<"net ontricatelnih";
 }
+/*
+ввод
+6
+99
+1 2 -3 4 4 0
+вывод
+1 2 99 -3 4 4 0
+ввод 
+4
+1
+5 5 5 5
+вывод
+net ontricatelnih
+*/
