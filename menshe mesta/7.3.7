@@ -22,7 +22,7 @@ int main()
 	{
 		string symbol; symbol = str[i];
 		string symbol1; symbol1 = str[i - 1];
-		if (symbol == bukva && symbol1 == " ")
+		if (symbol == bukva && symbol1 == " ")//если символ это нужная нам буква, а символ за ним пробел, значит выводим слово
 		{
 			while (symbol != " ")
 			{
@@ -34,3 +34,12 @@ int main()
 		}
 	}
 }
+/*
+ввод
+absurdno odnako anyuta alekseevna
+a
+вывод
+absurdno
+anyuta
+alekseevna
+*/
