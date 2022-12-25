@@ -6,29 +6,41 @@
 #include <string>
 using namespace std;
 
-
-
+//double f(double eps, double x,double sum, double proiz, double step, double c, int& count)//функция для подсчёта очередного члена суммы
+//{
+//	while (step / proiz - eps > 0)
+//	{
+//		sum += (double)step / proiz;
+//		step *= x;//рекурентный подсчёт степени
+//		c += 2;
+//		proiz *= c;//рекурентный подсчёт произведения
+//		count++;//счётчик шагов
+//	}
+//	return sum;
+//}
 int main()
 {
 	double h = 0.1;
 	double a = 0.05;
-	double b = 0.095;
+	double b = 0.95;
 	double eps; cin >> eps;
-	for (double x = 0.05; x - b <= eps; x += h)
+	for (double x = 0.05;abs(x - b) <= eps; x += h)
 	{
 		long c = 3;
 		long proiz = c;
 		long step = x;
-		long count = 0;
+		int count = 0;
 		double sum = 1;
-		while (step / proiz - eps > 0)
-		{
-			sum += (double)step / proiz;
-			step *= x;
-			c += 2;
-			proiz *= c;
-			count++;
-		}
-		cout << x << sum << count << endl;
+		while ((double)step / proiz - eps > 0)
+				{
+					sum += (double)step / proiz;
+					step *= x;//рекурентный подсчёт степени
+					c += 2;
+					proiz *= c;//рекурентный подсчёт произведения
+					count++;//счётчик шагов
+					cout << (double)step / proiz << ' ' << count;
+				}
+		cout << count << endl;
+		cout << x <<' ' << sum <<' ' << count << endl;
 	}
 }
