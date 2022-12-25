@@ -41,11 +41,33 @@ int main()
 	{
 		if (a[i].kolvo < kolv)
 		{
-			kolv = a[i].kolvo;
+			kolv = a[i].kolvo;проходимся по каоличеству каждого товара и находим наименьшее после чего запоминаем его индекс
 			ind = i;
 		}
 	}
-	out << a[ind].vid << a[ind].cost << a[ind].sort;
+	out << a[ind].vid << a[ind].cost << a[ind].sort;//выводим нужные данные
 	in.close();
 	out.close();
 }
+/*
+ввод
+4
+product
+20
+grechka
+1000000
+gadjet
+50000
+telphone
+100
+kanzelaria
+50
+ruchka
+500
+uslugi
+1000
+gdz
+1000
+вывод
+gadjet 50000 telphone
+*/
