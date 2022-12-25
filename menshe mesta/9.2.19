@@ -32,3 +32,10 @@ int main()
 	in.close();
 	out.close();
 }
+/*
+ввод
+d
+d d d a v a 2 a d i f b q g t t y u l e g
+вывод
+d d a i 
+*/
