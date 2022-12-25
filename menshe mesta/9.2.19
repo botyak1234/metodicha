@@ -29,4 +29,6 @@ int main()
 		if (pred == symb) out << tek << ' ';//если предыдущий символ равен нужному, то выводим текущий
 		pred = tek;
 	}
+	in.close();
+	out.close();
 }
