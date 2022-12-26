@@ -10,21 +10,21 @@
 using namespace std;
 
 
-	ifstream in("input.txt");
-	ofstream out("output.txt");
+ifstream in("input.txt");
+ofstream out("output.txt");
 
-	struct point
-	{
-		string vid;
-		int cost;
-		string sort;
-		int kolvo;
-		void f();
-	};
-	void point::f()
-	{
-		out << vid << cost << sort;
-	}
+struct point
+{
+	string vid;
+	int cost;
+	string sort;
+	int kolvo;
+	void f();
+};
+void point::f()
+{
+	out << vid << ' ' << cost << ' ' << sort;
+}
 int main()
 {
 	int n; in >> n;
@@ -35,17 +35,18 @@ int main()
 	{
 		in >> a[i].vid;
 		in >> a[i].cost;
+		in >> a[i].sort;
 		in >> a[i].kolvo;
 	}
 	for (int i = 0; i < n; i++)
 	{
 		if (a[i].kolvo < kolv)
 		{
-			kolv = a[i].kolvo;проходимся по каоличеству каждого товара и находим наименьшее после чего запоминаем его индекс
-			ind = i;
+			kolv = a[i].kolvo;// проходимся по количеству каждого товара и находим наименьшее после чего запоминаем его индекс
+				ind = i;
 		}
 	}
-	out << a[ind].vid << a[ind].cost << a[ind].sort;//выводим нужные данные
+	a[ind].f();
 	in.close();
 	out.close();
 }
