@@ -23,12 +23,12 @@ struct point
 };
 void point::f()
 {
-	out << vid << ' ' << cost << ' ' << sort;
+	out << vid << ' ' << cost << ' ' << sort;//реализация член - функции для вывода данных в файл;
 }
 int main()
 {
 	int n; in >> n;
-	point* a = new point[n];
+	point* a = new point[n];//описывание массива структур
 	int kolv = 100000000;
 	int ind;
 	for (int i = 0; i < n; i++)
@@ -46,7 +46,7 @@ int main()
 				ind = i;
 		}
 	}
-	a[ind].f();
+	a[ind].f();//вызываем член - функцию для вывода
 	in.close();
 	out.close();
 }
