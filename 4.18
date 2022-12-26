@@ -5,15 +5,22 @@
 using namespace std;
 int main()
 {
-	int b= 100;
+	SetConsoleCP(1251);
+	SetConsoleOutputCP(1251);
+	int b = 100;
 	int n;
 	cin >> n;
-	for (int i = 0; i < n - 1; i++)
+	if (n)
 	{
-		if (i % 2 == 0) b = b / 10;//подсчёт b через предыдущее, учитывая чётность шага
-		else b = b + 10;
-		cout << b << endl;
+		cout << b;
+		for (int i = 0; i < n - 1; i++)
+		{
+			if (i % 2 == 0) b = b / 10;//подсчёт b через предыдущее, учитывая чётность шага
+			else b = b + 10;
+			cout << b << endl;
+		}
 	}
+	else cout << "Члена последовательности не существует";
 }
 /*
 ввод:
