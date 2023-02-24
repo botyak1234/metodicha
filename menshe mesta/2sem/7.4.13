@@ -1,0 +1,29 @@
+#include <iostream>
+#include <cmath>
+#include <iomanip>
+#include <windows.h>
+#include <algorithm>
+#include <vector>
+#include <string>
+#include <sstream>
+#include <cstring>
+#include <fstream>
+#include <vector>
+using namespace std;
+
+
+
+int main()
+{
+	string s;
+	getline(cin, s);
+	int chislo = stoi(s);
+	int sum;
+	while (chislo)
+	{
+		sum += chislo % 10;
+		chislo /= 10;
+	}
+	cout << sum;
+}
+	
