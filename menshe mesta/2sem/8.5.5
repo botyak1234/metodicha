@@ -1,0 +1,43 @@
+#include <iostream>
+#include <cmath>
+#include <iomanip>
+#include <windows.h>
+#include <algorithm>
+#include <vector>
+#include <string>
+#include <sstream>
+#include <cstring>
+#include <fstream>
+#include <vector>
+using namespace std;
+
+template <typename T> double sred(T* a, int n)
+{
+	T s = 0;
+	for (int i = 0; i < n; i++)
+	{
+		s += a[i];
+	}
+	return s / (double)n;
+}
+
+template <typename T> void vvod(T* a, int n)
+{
+	for (int i = 0; i < n; i++) cin >> a[i];
+}
+
+template <typename T> void vivod(T* a, int n)
+{
+	for (int i = 0; i < n; i++)
+	{
+		cout << a[i] << ' ';
+	}
+}
+
+int main()
+{
+	int n; cin >> n;
+	double* a = new double[n];
+	vvod(a, n);
+	cout << sred(a, n);
+}
