@@ -11,14 +11,13 @@
 #include <vector>
 
 using namespace std;
-long m = -1000000;
 
-int rek(int* a, int n)
+int rek(int* a, int n, int &m)
 {
 	if (n > 0)
 	{
-		if (a[n - 1] > m) m = a[n - 1];
-		return rek(a, n - 1);
+		if (a[n - 1] > m ) m = a[n - 1];
+		return rek(a, n - 1, m);
 	}
 	return m;
 }
@@ -26,7 +25,8 @@ int rek(int* a, int n)
 int main()
 {
 	int n; cin >> n;
+	int m = -100000;
 	int* a = new int[n];
 	for (int i = 0; i < n; i++) cin >> a[i];
-	cout << rek(a, n);
+	cout << rek(a, n, m);
 }
