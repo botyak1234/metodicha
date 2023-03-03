@@ -17,8 +17,8 @@ int main()
 {
 	string s;
 	getline(cin, s);
-	int chislo = stoi(s);
-	int sum;
+	int chislo = abs(stoi(s));
+	int sum = 0;
 	while (chislo)
 	{
 		sum += chislo % 10;
