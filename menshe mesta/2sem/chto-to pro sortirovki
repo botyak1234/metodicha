@@ -11,144 +11,76 @@
 #include <vector>
 using namespace std;
 
-void puzir(string* im, string* f, string* ot, int* g, int* mark1, int* mark2, int* mark3, int* mark4, int* mark5, int n)
+struct student
 {
-	string tempim;
-	int tempint;
+	string imya, fam, otchestvo;
+	int god;
+	int marks[5];
+};
+
+void puzir(student* a, int n)
+{
 	for (int i = 0; i < n - 1; i++)
 	{
 		for (int j = n - 1; j > i; j--)
 		{
-			if (f[j] < f[j - 1])
+			if (a[j].fam > a[j - 1].fam)
 			{
-				tempim = f[j];
-				f[j] = f[j - 1];
-				f[j - 1] = tempim;
-				tempim = im[j];
-				im[j] = im[j - 1];
-				im[j - 1] = tempim;
-				tempim = ot[j];
-				ot[j] = ot[j - 1];
-				ot[j - 1] = tempim;
-				tempint = g[j];
-				g[j] = g[j - 1];
-				g[j - 1] = tempint;
-				tempint = mark1[j];
-				mark1[j] = mark1[j - 1];
-				mark1[j - 1] = tempint;
-				tempint = mark2[j];
-				mark2[j] = mark2[j - 1];
-				mark2[j - 1] = tempint;
-				tempint = mark3[j];
-				mark3[j] = mark3[j - 1];
-				mark3[j - 1] = tempint;
-				tempint = mark4[j];
-				mark4[j] = mark4[j - 1];
-				mark4[j - 1] = tempint;
-				tempint = mark5[j];
-				mark5[j] = mark5[j - 1];
-				mark5[j - 1] = tempint;
+				swap(a[j], a[j - 1]);
 			}
 		}
 	}
 }
 
-
-void vstavka(string* im, string* f, string* ot, int* g, int* mark1, int* mark2, int* mark3, int* mark4, int* mark5, int n)
-{
-	string tempim;
-	int tempint;
-	for (int i = 1; i < n; i++)
-	{
-		int j = i;
-		while(f[j] < f[j-1])
-		{
-			swap(f[j], f[j - 1]);
-
-			swap(im[j], im[j - 1]);
-			
-			swap(ot[j], ot[j - 1]);
-			
-			swap(g[j], g[j - 1]);
-			
-			swap(mark1[j], mark1[j - 1]);
-			
-			swap(mark2[j], mark2[j - 1]);
-			
-			swap(mark3[j], mark3[j - 1]);
-			
-			swap(mark4[j], mark4[j - 1]);
-			
-			swap(mark5[j], mark5[j - 1]);
-			
-			j--;
-		}
-	}
-}
-void vibor(string* im, string* f, string* ot, int* g, int* mark1, int* mark2, int* mark3, int* mark4, int* mark5, int n)
+void vibor(student *a, int n)
 {
 	string lowkey;
 	string lowkeyint;
 	int lowindex;
-	for (int i = 0; i < n-1; i++)
+	for (int i = 0; i < n - 1; i++)
 	{
 		lowindex = i;
-		lowkey = f[i];
+		lowkey = a[i].fam;
 		for (int j = i + 1; j < n; j++)
 		{
-			if (f[j] < lowkey)
+			if (a[j].fam < lowkey)
 			{
-				lowkey = f[j];
+				lowkey = a[j].imya;
 				lowindex = j;
 			}
 		}
-		swap(f[i], f[lowindex]);
-
-		swap(im[i], im[lowindex]);
-
-		swap(ot[i], ot[lowindex]);
-
-		swap(g[i], g[lowindex]);
-
-		swap(mark1[i], mark1[lowindex]);
-
-		swap(mark2[i], mark2[lowindex]);
-
-		swap(mark3[i], mark3[lowindex]);
-
-		swap(mark4[i], mark4[lowindex]);
-
-		swap(mark5[i], mark5[lowindex]);
+		swap(a[i], a[lowindex]);
 	}
 }
 
+
+
 int main()
 {
+	
 	int n; cin >> n;
-	string* imya = new string[n];
-	string* fam = new string[n];
-	string* otchestvo = new string[n];
-	int* god = new int[n];
-	int* mark1 = new int[n];
-	int* mark2 = new int[n];
-	int* mark3 = new int[n];
-	int* mark4 = new int[n];
-	int* mark5 = new int[n];
 	ifstream in("input.txt");
 	ofstream out("output.txt");
+	student* array = new student[n];
 	while (in.peek() != EOF)
 	{
 		for (int i = 0; i < n; i++)
 		{
-			in >> imya[i] >> fam[i] >> otchestvo[i] >> god[i] >> mark1[i] >> mark2[i] >> mark3[i] >> mark4[i] >> mark5[i];
+			in >> array[i].imya >> array[i].fam >> array[i].otchestvo >> array[i].god;
+			for (int j = 0; j < 5; j++)
+			{
+				in >> array[i].marks[j];
+			}
 		}
 	}
-	vibor(imya, fam, otchestvo, god, mark1, mark2, mark3, mark4, mark5, n);
+	vibor(array, n);
 	for (int i = 0; i < n; i++)
 	{
-		out << imya[i] << ' ' << fam[i] << ' ' << otchestvo[i] << ' ' << god[i] << ' ' << mark1[i] << ' ' << mark2[i] << ' ' << mark3[i] << ' ' << mark4[i] << ' ' << mark5[i] << endl;
+		out << array[i].imya << ' ' << array[i].fam << ' ' << array[i].otchestvo << ' ' << array[i].god << ' ';
+		for (int j = 0; j < 5; j++)
+		{
+			out << array[i].marks[j] << ' ';
+		}
+		out << endl;
 	}
-	in.close();
-	out.close();
 }
-	
