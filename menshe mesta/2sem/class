@@ -17,18 +17,26 @@ ofstream out("output. txt");
 class novoe
 {
 private:
-	int* IntArray = new int[n];
+	int* IntArray;
 public:
+	int n;
 	novoe() {}
-	
+	/*novoe(int n)
+	{
+		IntArray = new int[n];
+	}*/
+	void resize(int n)
+	{
+		IntArray = new int[n];
+	}
 	/*void operator ++()
 	{
 		for (int i = 0; i < n; i++) ++IntArray[i];
-	}*/
-	void operator ++()
-	{
-		for (int i = 0; i < n; i++) IntArray[i]++;
 	}
+	void operator ++(int)
+	{
+		for (int i = 0; i < n; i++) ++IntArray[i];
+	}*/
 	void operator *(int scalyar)
 	{
 		for (int i = 0; i < n; i++) IntArray[i] *= scalyar;
@@ -40,9 +48,9 @@ public:
 			arr[i] = IntArray[i];
 		}
 	}*/
-	int n;
-	void vvod(int n)
+	void vvod()
 	{
+		cin >> n;
 		for (int i = 0; i < n; i++) cin >> IntArray[i];
 	}
 	void vivod(int n)
@@ -86,14 +94,22 @@ public:
 
 int main()
 {
-	
-	
-	
-	
+	int a; cin >> a;
+	novoe* arr = new novoe[a];
+
+	for (int i = 0; i < a; i++)
+	{
+		arr[i].resize(a);
+	}
+	for (int i = 0; i < a; i++)
+	{
+		arr[i].vvod();
+		arr[i].vivod(arr[i].n);
+	}
 	
 	/*novoe f;
 	cin >> f.n;
-	f.vvod(f.n);
+	f.vvod();
 	novoe ff = f;
 	ff.vivod(ff.n);*/
 	
