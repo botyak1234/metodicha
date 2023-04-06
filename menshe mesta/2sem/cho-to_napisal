@@ -1,0 +1,151 @@
+#include <iostream>
+#include <cmath>
+#include <iomanip>
+#include <windows.h>
+#include <algorithm>
+#include <vector>
+#include <string>
+#include <sstream>
+#include <cstring>
+#include <fstream>
+#include <vector>
+#include <stack>
+#include "queue.cpp"
+using namespace std;
+
+
+class staack 
+{
+	struct element 
+	{
+		int inf;
+		element* next;
+		element(int x, element* p) : inf(x), next(p) {}
+	};
+	element* head;
+public:
+	staack() :head(0) 
+	{}
+	bool empty()
+	{
+		return head == 0;
+	}
+	int pop()
+	{
+		if(empty())
+		{
+			return 0;
+		}
+		element* r = head;
+		int i = r->inf;
+		head = r->next;
+		delete r;
+		return i;
+	}
+	void push(int data)
+	{
+		head = new element(data, head);
+	}
+	int top()
+	{
+		if (empty())
+		{
+			return 0;
+		}
+		else
+		{
+			return head->inf;
+		}
+	}
+};
+
+
+
+//int main()
+//{
+//	staack t, t1, t2;
+//	int x, x1, c = 0;
+//	ifstream in("input.txt");
+//	ofstream out("output.txt");
+//	while (in.peek() != EOF)
+//	{
+//		in >> x;
+//		t.push(x);
+//	}
+//	in.close();
+//	while (!t.empty())
+//	{
+//		x = t.pop();
+//		t1.push(x);
+//		if (!t.empty())
+//		{
+//			x1 = t.pop(); 
+//			t2.push(x1);
+//			if (x == x1) c++;
+//		}
+//	}
+//	while (!t1.empty())
+//	{
+//		x = t1.pop();
+//		t.push(x);
+//		if (!t2.empty())
+//		{
+//			x1 = t2.pop();
+//			if (x != x1)
+//			{
+//				t.push(x1);
+//			}
+//			else
+//			{
+//				while (!t2.empty())
+//				{
+//					x1 = t2.pop();
+//					if (x1 != x)
+//					{
+//						t.push(x1);
+//						break;
+//					}
+//				}
+//			}
+//		}
+//	}
+//	while (!t.empty())
+//	{
+//		out << t.pop() << ' '; 
+//	}
+//	out << endl;
+//	out << c;
+//	out.close();
+//}
+
+//int main()
+//{
+//	queue t, t1;
+//	int x, x1, c = 0;
+//	ifstream in("input.txt");
+//	ofstream out("output.txt");
+//	while (in.peek() != EOF)
+//	{
+//		in >> x;
+//		t.put(x);
+//	}
+//	in.close();
+//	while(!t.empty())
+//	{
+//		x = t.get();
+//		t1.put(x);
+//		while (!t.empty())
+//		{
+//			x1 = t.get();
+//			if (x1 == x) c++;
+//			else t1.put(x1);
+//		}
+//	}
+//	while (!t1.empty())
+//		{
+//			out << t1.get() << ' '; 
+//		}
+//	out << endl;
+//	out << c;
+//	out.close();
+//}
