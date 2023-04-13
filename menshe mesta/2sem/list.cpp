@@ -1,4 +1,4 @@
-class list 
+class list
 {
 	struct element
 	{
@@ -8,35 +8,33 @@ class list
 	};
 	element* head;
 	int size;
+
 	element* find(int x)
 	{
 		element* cur = head;
-		while (x != inf)
+		for (int i = 0; i < size; i++)
 		{
-			cur = cur->next;
+			if (cur->inf == x)
+			{
+				return cur;
+			}
 		}
-		return cur;
 	}
-	element* find(int index, 0)
+	element* find(int index, int x)
 	{
 		if ((index < 1) || (index > size))
 		{
-			return 0;
+			return nullptr;
 		}
-		else:
+		else
 		{
 			element* cur = head;
 			for (int i = 1; i < index; i++)
 			{
-
+				cur = cur->next;
 			}
+			return cur;
 		}
-		element* cur = head;
-		while (x != inf)
-		{
-			cur = cur->next;
-		}
-		return cur;
 	}
 public:
 	list() :head(0), size(0) {}
@@ -63,9 +61,12 @@ public:
 			newptr->next = head;
 			head = newptr;
 		}
-		else 
+		else
 		{
-			element *prev = find()
+			element* prev = find(index -1, 0);
+			newptr->next = prev->next;
+			prev->next = newptr;
 		}
 	}
+	void remove
 };
