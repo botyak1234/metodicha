@@ -1,0 +1,75 @@
+#include <iostream>
+#include <cmath>
+#include <iomanip>
+#include <windows.h>
+#include <algorithm>
+#include <vector>
+#include <string>
+#include <sstream>
+#include <cstring>
+#include <fstream>
+#include <stack>
+#include "queue.cpp"
+#include "list.cpp"
+#include <list>
+using namespace std;
+
+
+
+int del(int x)
+{
+	int c = 1;
+	for (int i = 2; i < sqrt(x); i++)
+	{
+		if (x % i == 0) c += 2;
+	}
+	return c;
+}
+
+int obratno(int x)
+{
+	int x1 = x % 10;
+	int x2 = x % 100 / 10;
+	int x3 = x / 100;
+	cout << '!' << endl;
+	return x1 * 100 + x2 * 10 + x3;
+}
+
+
+int main()
+{
+	int value;
+	int n; cin >> n;
+	vector<int> a;
+	list<int> b;
+	for (int i = 0; i < n; i++)
+	{
+		cin >> value;
+		a.push_back(value);
+		b.push_back(value);
+	}
+	int x1 = a.front();
+	int x2 = a.back();
+	int x3 = b.front();
+	int x4 = b.back();
+	if (del(x1) == del(x2))
+	{
+		a.insert(a.begin() + n / 2, 0);
+		a.insert(a.begin() + n / 2 + 2, 0);
+	}
+	list<int>::iterator iter;
+	iter = prev(b.end());
+	b.erase(b.begin());
+	b.push_front(obratno(x3));
+	b.erase(iter);
+	b.push_back(obratno(x4));
+	for (auto it = a.begin(); it != a.end(); it++)
+	{
+		cout << *it << ' ';
+	}
+	cout << endl;
+	for (iter = b.begin(); iter != b.end(); iter++)
+	{
+		cout << *iter << ' ';
+	}
+}
