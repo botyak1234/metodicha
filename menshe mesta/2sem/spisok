@@ -92,14 +92,14 @@ class list
 	}
 	element* find(int index)
 	{
-		if ((index < 1) || (index > size))
+		if ((index < 0) || (index > size))
 		{
 			return nullptr;
 		}
 		else
 		{
 			element* cur = head;
-			for (int i = 1; i < index; i++)
+			for (int i = 1; i < index-1; i++)
 			{
 				cur = cur->next;
 			}
@@ -124,53 +124,43 @@ public:
 	}
 	int get(int index)
 	{
-		if (index >= 1 && index <= size)
-		{
-			element* r = find(index);
-			int i = r->inf;
-			return i;
-		}
+		element* r = find(index);
+		int i = r->inf;
+		return i;
 	}
 	void insert(int index, int data)
 	{
-		if (index >= 1 && index <= size)
+		element* newptr = new element(data);
+		size = getlength() + 1;
+		if (index == 1)
 		{
-
-			element* newptr = new element(data);
-			size = getlength() + 1;
-			if (index == 1)
-			{
-				newptr->next = head;
-				head = newptr;
-			}
-			else
-			{
-				element* prev = find(index - 1);
-				newptr->next = prev->next;
-				prev->next = newptr;
-			}
+			newptr->next = head;
+			head = newptr;
+		}
+		else
+		{
+			element* prev = find(index - 1);
+			newptr->next = prev->next;
+			prev->next = newptr;
 		}
 	}
 	void remove(int index)
 	{
-		if (index >= 0 && index < size)
+		element* cur;
+		--size;
+		if (index == 1)
 		{
-			element* cur;
-			--size;
-			if (index == 0)
-			{
-				cur = head;
-				head = head->next;
-			}
-			else
-			{
-				element* prev = find(index - 1);
-				cur = prev->next;
-				prev->next = cur->next;
-			}
-			cur->next = nullptr;
-			delete cur;
+			cur = head;
+			head = head->next;
 		}
+		else
+		{
+			element* prev = find(index - 1);
+			cur = prev->next;
+			prev->next = cur->next;
+		}
+		cur->next = nullptr;
+		delete cur;
 	}
 	void print()
 	{
