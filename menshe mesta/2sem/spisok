@@ -10,8 +10,6 @@
 #include <fstream>
 #include <vector>
 #include <stack>
-#include "queue.cpp"
-#include "list.cpp"
 using namespace std;
 
 ifstream in("input.txt");
@@ -27,7 +25,7 @@ class staack
 		element(int x, element* p) : inf(x), next(p) {}
 	};
 	element* head;
-	
+
 public:
 	staack() :head(0)
 	{}
@@ -83,7 +81,7 @@ class list
 	element* findx(int x)
 	{
 		element* cur = head;
-		for (int i = 0; i < size; i++)
+		for (int i = 1; i < size; i++)
 		{
 			if (cur->inf == x)
 			{
@@ -94,7 +92,7 @@ class list
 	}
 	element* find(int index)
 	{
-		if ((index < 0) || (index > size))
+		if ((index < 1) || (index > size))
 		{
 			return nullptr;
 		}
@@ -126,43 +124,53 @@ public:
 	}
 	int get(int index)
 	{
+		if (index >= 1 && index <= size)
+		{
 			element* r = find(index);
 			int i = r->inf;
 			return i;
+		}
 	}
 	void insert(int index, int data)
 	{
-		element* newptr = new element(data);
-		size = getlength() + 1;
-		if (index == 1)
+		if (index >= 1 && index <= size)
 		{
-			newptr->next = head;
-			head = newptr;
-		}
-		else
-		{
-			element* prev = find(index - 1);
-			newptr->next = prev->next;
-			prev->next = newptr;
+
+			element* newptr = new element(data);
+			size = getlength() + 1;
+			if (index == 1)
+			{
+				newptr->next = head;
+				head = newptr;
+			}
+			else
+			{
+				element* prev = find(index - 1);
+				newptr->next = prev->next;
+				prev->next = newptr;
+			}
 		}
 	}
 	void remove(int index)
 	{
-		element* cur;
-		--size;
-		if (index == 0)
+		if (index >= 0 && index < size)
 		{
-			cur = head;
-			head = head->next;
+			element* cur;
+			--size;
+			if (index == 0)
+			{
+				cur = head;
+				head = head->next;
+			}
+			else
+			{
+				element* prev = find(index - 1);
+				cur = prev->next;
+				prev->next = cur->next;
+			}
+			cur->next = nullptr;
+			delete cur;
 		}
-		else
-		{
-			element* prev = find(index - 1);
-			cur = prev->next;
-			prev->next = cur->next;
-		}
-		cur->next = nullptr;
-		delete cur;
 	}
 	void print()
 	{
