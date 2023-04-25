@@ -1,0 +1,70 @@
+#include <iostream>
+#include <cmath>
+#include <iomanip>
+#include <windows.h>
+#include <algorithm>
+#include <vector>
+#include <string>
+#include <sstream>
+#include <cstring>
+#include <fstream>
+#include <stack>
+#include "queue.cpp"
+#include "list.cpp"
+#include <list>
+using namespace std;
+ifstream in("input.txt");
+ofstream out("output.txt");
+
+struct student
+{
+	string imya, fam, otchestvo;
+	int god;
+	int marks[5];
+	void init()
+	{
+		in >> imya >> fam >> otchestvo >> god;
+		for (int j = 0; j < 5; j++)
+		{
+			in >> marks[j];
+		}
+	}
+	void disp()
+	{
+		out << imya << ' ' << fam << ' ' << otchestvo << ' ' << god << ' ';
+		for (int j = 0; j < 5; j++)
+		{
+			out << marks[j] << ' ';
+		}
+		out << endl;
+	}
+};
+
+bool comparator(const student& left, const student& right)
+{
+	return(left.fam < right.fam);
+}
+
+int main()
+{
+	int n; cin >> n;
+	vector <student> array;
+	student ss;
+	while (in.peek() != EOF)
+	{
+		ss.init();
+		array.push_back(ss);
+	}
+	sort(array.begin(), array.end(), comparator);
+	for (int i = 0; i < n; i++)
+	{
+		array[i].disp();
+	}
+}
+
+/*
+input
+dd dd dd 2000 1 1 1 1 1
+cc cc cc 2001 2 2 2 2 2
+aa aa aa 2002 5 5 5 5 5
+*/
