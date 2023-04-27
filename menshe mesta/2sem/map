@@ -1,0 +1,54 @@
+#include <iostream>
+#include <cmath>
+#include <iomanip>
+#include <windows.h>
+#include <algorithm>
+#include <vector>
+#include <string>
+#include <sstream>
+#include <cstring>
+#include <fstream>
+#include <stack>
+#include "queue.cpp"
+#include "list.cpp"
+#include <map>
+#include <list>
+#include <set>
+using namespace std;
+
+
+int main()
+{
+	ifstream in("input.txt");
+	ofstream out("output.txt");
+	string str;
+	getline(in, str);
+	stringstream ss(str);
+	map<int, vector<int>>::iterator it;
+	map<int, vector<int>> mp;
+	string word;
+	int num;
+	int i = 0;
+	while (getline(ss, word, ' '))
+	{
+		if (isdigit(word[0]))
+		{
+			num = stoi(word);
+			if (mp.find(num) == mp.end())
+			{
+				mp.insert(num, { i });
+			}
+			else it->second.push_back(i);
+		}
+		i++;
+	}
+	for (auto it = mp.begin(); it != mp.end(); ++it)
+	{
+		out << it->first << ' - ';
+		for (int i = 0; i < size(it->second); i++)
+		{
+			out << it->second[i] << ' ';
+		}
+		out << endl;
+	}
+}
