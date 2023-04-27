@@ -1,0 +1,36 @@
+#include <iostream>
+#include <cmath>
+#include <iomanip>
+#include <windows.h>
+#include <algorithm>
+#include <vector>
+#include <string>
+#include <sstream>
+#include <cstring>
+#include <fstream>
+#include <stack>
+#include "queue.cpp"
+#include "list.cpp"
+#include <list>
+#include <set>
+using namespace std;
+
+
+int main()
+{
+	int n; cin >> n;
+	set<int> s;
+	vector<int> array = {0, 1, 2, 3, 4, 5, 6, 7, 8, 9};
+	int a;
+	for (int i = 0; i < n; i++)
+	{
+		cin >> a;
+		s.insert(a % 10);
+		s.insert(a / 10);
+	}
+	for (int i = 0; i < 10; i++)
+	{
+		int x = *array.begin() + i;
+		if (count(s.begin(), s.end(), x) == 0) cout << x << ' ';
+	}
+}
