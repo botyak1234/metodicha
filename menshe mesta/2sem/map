@@ -24,8 +24,9 @@ int main()
 	string str;
 	getline(in, str);
 	stringstream ss(str);
-	map<int, vector<int>>::iterator it;
 	map<int, vector<int>> mp;
+	map<int, vector<int>>::iterator it;
+	it = mp.begin();
 	string word;
 	int num;
 	int i = 0;
@@ -34,11 +35,7 @@ int main()
 		if (isdigit(word[0]))
 		{
 			num = stoi(word);
-			if (mp.find(num) == mp.end())
-			{
-				mp.insert(num, { i });
-			}
-			else it->second.push_back(i);
+			mp[num].push_back(i);
 		}
 		i++;
 	}
