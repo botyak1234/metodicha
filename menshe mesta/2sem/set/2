@@ -9,52 +9,48 @@
 #include <cstring>
 #include <fstream>
 #include <stack>
-#include "queue.cpp"
-#include "list.cpp"
 #include <list>
 #include <set>
 using namespace std;
 
 
-int main()
+set<char> digitsInAllStrings(const vector<string>& strings) 
 {
-	int n; cin >> n;
-	string str;
-	multiset<int> s;
-	set<int>ss;
-	vector<string> array;
-	for (int i = 0; i < n; i++)
-	{
-		cin >> str;
-		for (char c : str)
-		{
-			if (isdigit(c)) ss.insert(c-'0');
-		}
-		for (auto it = ss.begin(); it != ss.end(); ++it)
-		{
-			int x = *it;
-			s.insert(x);
-		}
-		ss.clear();
-	}
-	for (auto it = s.begin(); it != s.end(); ++it)
-	{
-		int x = *it;
-		if (s.count(x) == n)
-		{
-			cout << x << ' ';
-			for (int i = 0; i < n; i++) ++it;
-		}
-	}
-		/*for (int i = 0; i < size(ss); i++)
-		{
-			int x = *ss.begin() + i;
-			s.insert(x);
-		}
-	}
-	for (int i = 0; i < size(s); i++)
-	{
-		int x = *s.begin() + i;
-		if (count(s.begin(), s.end(), x) == n) cout << x << ' ';
-	}*/
+    if (strings.empty()) return {};
+
+    set<char> digits;
+    for (char c : strings[0]) 
+    {
+        if (isdigit(c)) digits.insert(c);
+    }
+
+    for (int i = 1; i < strings.size(); ++i) 
+    {
+        set<char> tempDigits;
+        for (char c : strings[i]) 
+        {
+            if (isdigit(c)) tempDigits.insert(c);
+        }
+        set<char> intersection;
+        set_intersection(digits.begin(), digits.end(), tempDigits.begin(), tempDigits.end(), inserter(intersection, intersection.begin()));
+        digits = intersection;
+    }
+    return digits;
+}
+
+int main() 
+{
+    int n; cin >> n;
+    string ss;
+    vector<string> strings;
+    for (int i = 0; i < n; i++)
+    {
+        cin >> ss;
+    }
+    set<char> digits = digitsInAllStrings(strings);
+    for (char c : digits) 
+    {
+        cout << c << " ";
+    }
+    cout << endl;
 }
