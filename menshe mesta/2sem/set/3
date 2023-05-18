@@ -19,10 +19,12 @@ using namespace std;
 
 int main()
 {
-	ifstream in ("input.txt");
-	ofstream out("output.txt");
+    ifstream in("input.txt");
+    ofstream out("output.txt");
     string sentence;
     set<string> povest;
+    set<string> voskl;
+    set<string> cho_to;
     map<string, int> itog_words;
     while (getline(in, sentence, '.') || getline(in, sentence, '?') || getline(in, sentence, '!'))
     {
@@ -33,13 +35,16 @@ int main()
         while (ss >> word)
         {
             transform(word.begin(), word.end(), word.begin(), tolower);
-            if (is_povest) 
+            if (is_povest)
             {
                 povest.insert(word);
             }
-            if (is_voskl && povest.count(word) > 0) 
+            if (is_voskl)
             {
-                itog_words[word]++;
+                voskl.insert(word);
+                set_intersection(povest.begin(), povest.end(), voskl.begin(), voskl.end(), inserter(cho_to, cho_to.begin()));
+                if (!cho_to.empty()) itog_words[word]++;
+                voskl.clear();
             }
         }
     }
