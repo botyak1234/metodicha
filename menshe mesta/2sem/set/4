@@ -19,36 +19,35 @@ using namespace std;
 
 int main()
 {
-	ifstream in ("input.txt");
-	ofstream out("output.txt");
+    ifstream in("input.txt");
+    ofstream out("output.txt");
     int k;  cin >> k;
-    set<int> set_all, set_k; 
+    set<int> set_all, set_k;
     set<int>set_time;
+    set<int>itog;
     string line;
-    while (getline(in, line)) {
+    while (getline(in, line)) 
+    {
+        cout << line << endl;
         stringstream ss(line);
         int num;
         int c = 0;
-        while (ss >> num) 
+        while (ss >> num)
         {
             c++;
-            if (set_k.count(num) == 0 && c < k) 
-            {
-                set_time.insert(num);
-                set_all.insert(num);
-            }
-            else 
-            {
-                set_all.insert(num);
-                set_time.clear();
-            }
+            set_all.insert(num);
+            if (c < k) set_time.insert(num);
+            else set_time.clear();
         }
-        set_k.insert(set_time.begin(), set_time.end());
+        set_union(set_k.begin(), set_k.end(), set_time.begin(), set_time.end(), inserter(set_k, set_k.begin()));
     }
-    for (auto it = set_all.begin(); it != set_all.end(); ++it) {
-        if (set_k.count(*it) == 0)
-        {
-            out << *it << " ";
-        }
+    for (auto it = set_k.begin(); it != set_k.end(); ++it)
+    {
+        cout << *it << ' ';
+    }
+    set_difference(set_all.begin(), set_all.end(), set_k.begin(), set_k.end(), inserter(itog, itog.begin()));
+    for (auto it = itog.begin(); it != itog.end(); ++it) 
+    {
+        out << *it << ' ';
     }
 }
