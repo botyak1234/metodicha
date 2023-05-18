@@ -14,43 +14,33 @@
 using namespace std;
 
 
-set<char> digitsInAllStrings(const vector<string>& strings) 
+
+
+int main()
 {
-    if (strings.empty()) return {};
+    ifstream in("input.txt");
+    ofstream out("output.txt");
+    int n; 
+    cin >> n;
+    vector <set<int>> array;
+    vector<int> itog;
+    string line;
 
-    set<char> digits;
-    for (char c : strings[0]) 
+    while (getline(in, line))
     {
-        if (isdigit(c)) digits.insert(c);
-    }
-
-    for (int i = 1; i < strings.size(); ++i) 
-    {
-        set<char> tempDigits;
-        for (char c : strings[i]) 
+        set<int> s;
+        for (int i = 0; i < size(line); i++)
         {
-            if (isdigit(c)) tempDigits.insert(c);
+            if (isdigit(line[i])) s.insert(line[i] - '0');
         }
-        set<char> intersection;
-        set_intersection(digits.begin(), digits.end(), tempDigits.begin(), tempDigits.end(), inserter(intersection, intersection.begin()));
-        digits = intersection;
+        array.push_back(s);
     }
-    return digits;
-}
-
-int main() 
-{
-    int n; cin >> n;
-    string ss;
-    vector<string> strings;
-    for (int i = 0; i < n; i++)
+    for (int i = 1; i < n; i++)
     {
-        cin >> ss;
+        set_intersection(array[i - 1].begin(), array[i - 1].end(), array[i].begin(), array[i].end(), inserter(array[i], array[i].begin()));
     }
-    set<char> digits = digitsInAllStrings(strings);
-    for (char c : digits) 
+    for (auto it = array[n-1].begin(); it != array[n-1].end(); ++it)
     {
-        cout << c << " ";
+        out << *it << ' ';
     }
-    cout << endl;
 }
