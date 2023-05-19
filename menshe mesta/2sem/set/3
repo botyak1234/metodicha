@@ -46,8 +46,8 @@ int main()
         }
     }
     set_intersection(povest.begin(), povest.end(), voskl.begin(), voskl.end(), inserter(cho_to, cho_to.begin()));
-    for (auto it = itog_words.begin(); it != itog_words.end(); ++it) 
+    for (auto it = cho_to.begin(); it != cho_to; ++it) 
     {
-        out << it->first << " : " << it->second << endl;
+        out << *it << ' ' << endl;
     }
-}
+} 
