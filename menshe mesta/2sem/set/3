@@ -42,13 +42,12 @@ int main()
             if (is_voskl)
             {
                 voskl.insert(word);
-                set_intersection(povest.begin(), povest.end(), voskl.begin(), voskl.end(), inserter(cho_to, cho_to.begin()));
-                if (!cho_to.empty()) itog_words[word]++;
-                voskl.clear();
             }
         }
     }
-    for (auto it = itog_words.begin(); it != itog_words.end(); ++it) {
+    set_intersection(povest.begin(), povest.end(), voskl.begin(), voskl.end(), inserter(cho_to, cho_to.begin()));
+    for (auto it = itog_words.begin(); it != itog_words.end(); ++it) 
+    {
         out << it->first << " : " << it->second << endl;
     }
 }
