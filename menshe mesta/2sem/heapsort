@@ -1,0 +1,120 @@
+#include <iostream>
+#include <cmath>
+#include <iomanip>
+#include <windows.h>
+#include <algorithm>
+#include <vector>
+#include <string>
+#include <sstream>
+#include <cstring>
+#include <fstream>
+#include <stack>
+#include <list>
+#include <set>
+
+using namespace std;
+
+
+
+
+
+void heapify(int *arr, int n, int i)
+{
+    int largest = i;
+    // Инициализируем наибольший элемент как корень
+    int l = 2 * i + 1; // левый = 2*i + 1
+    int r = 2 * i + 2; // правый = 2*i + 2
+
+    // Если левый дочерний элемент меньше корня
+    if (l < n && arr[l] < arr[largest])
+        largest = l;
+
+    // Если правый дочерний элемент меньше, чем самый большой элемент на данный момент
+    if (r < n && arr[r] < arr[largest])
+        largest = r;
+
+    // Если самый большой элемент не корень
+    if (largest != i)
+    {
+        swap(arr[i], arr[largest]);
+
+        // Рекурсивно преобразуем в двоичную кучу затронутое поддерево
+        heapify(arr, n, largest);
+    }
+}
+
+// Основная функция, выполняющая пирамидальную сортировку
+void heapsort(int *arr, int n)
+{
+    // Построение кучи (перегруппируем массив)
+    for (int i = n / 2 - 1; i >= 0; i--)
+        heapify(arr, n, i);
+
+    // Один за другим извлекаем элементы из кучи
+    for (int i = n - 1; i >= 0; i--)
+    {
+        // Перемещаем текущий корень в конец
+        swap(arr[0], arr[i]);
+
+        // вызываем процедуру heapify на уменьшенной куче
+        heapify(arr, i, 0);
+    }
+}
+
+
+void sortColumns(int** matrix, int n) 
+{
+    for (int i = 0; i < n; i++) 
+    {
+        int* col = new int[n];
+        for (int j = 0; j < n; j++) 
+        {
+            col[j] = matrix[j][i];
+        }
+        heapsort(col, n);
+        for (int j = 0; j < n; j++) 
+        {
+            matrix[j][i] = col[j];
+        }
+        delete[] col;
+    }
+}
+
+// функция вывода матрицы
+void printMatrix(int** matrix, int n) 
+{
+    for (int i = 0; i < n; i++) 
+    {
+        for (int j = 0; j < n; j++) 
+        {
+            cout << matrix[i][j];
+        }
+        cout << endl;
+    }
+}
+
+int main() 
+{
+    int n;
+    cout << "Enter n: ";
+    cin >> n;
+
+    int** matrix = new int* [n];
+    for (int i = 0; i < n; i++) 
+    {
+        matrix[i] = new int[n];
+        for (int j = 0; j < n; j++) 
+        {
+            cin >> matrix[i][j];
+        }
+    }
+
+    sortColumns(matrix, n);
+    printMatrix(matrix, n);
+
+    for (int i = 0; i < n; i++) 
+    {
+        delete[] matrix[i];
+    }
+    delete[] matrix;
+}
