@@ -33,9 +33,11 @@ public:
 	{
 		for (int i = 0; i < n; i++) ++IntArray[i];
 	}
-	void operator ++(int)
+	novoe operator ++(int)
 	{
+		MyClass temp(*this);
 		for (int i = 0; i < n; i++) ++IntArray[i];
+		return temp
 	}*/
 	void operator *(int scalyar)
 	{
@@ -106,16 +108,16 @@ int main()
 		arr[i].vvod();
 		arr[i].vivod(arr[i].n);
 	}
-	
+
 	/*novoe f;
 	cin >> f.n;
 	f.vvod();
 	novoe ff = f;
 	ff.vivod(ff.n);*/
-	
-	
-	
-	
+
+
+
+
 	//novoe firstObject;
 	//firstObject.n = a;
 	//firstObject.vvod(firstObject.n);
