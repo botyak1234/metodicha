@@ -1,0 +1,43 @@
+#include <iostream>
+#include <cmath>
+#include <iomanip>
+#include <windows.h>
+#include <algorithm>
+#include <vector>
+#include <string>
+#include <sstream>
+#include <cstring>
+#include <fstream>
+#include <vector>
+
+using namespace std;
+class Sound {
+public:
+    int note;
+    int duration;
+
+    Sound(int note, int duration) : note(note), duration(duration) {}
+};
+
+int main() 
+{
+    vector<Sound> melody = { {1, 2}, {2, 3}, {3, 4}, {4, 1}, {5, 2}, {6, 3}, {7, 4}, {1, 1} };
+
+    int base_note = 4;
+
+    for_each(melody.begin(), melody.end(), [&](Sound& sound) {
+        if (sound.note > base_note) {
+            sound.duration *= 2;
+        }
+        else if (sound.note < base_note) 
+        {
+            sound.duration /= 2;
+        }
+        });
+
+    for (const auto& sound : melody) {
+        cout  << sound.note <<sound.duration << endl;
+    }
+
+    return 0;
+}
