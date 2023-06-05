@@ -1,0 +1,55 @@
+#include <iostream>
+#include <cmath>
+#include <iomanip>
+#include <windows.h>
+#include <algorithm>
+#include <vector>
+#include <string>
+#include <sstream>
+#include <cstring>
+#include <fstream>
+#include <map>
+#include <vector>
+
+using namespace std;
+
+
+class FilmCatalog {
+private:
+    map<string, vector<string>> directors; // ключ - режиссер, значение - список его фильмов
+    map<string, string> citizens; // ключ - режиссер, значение - его гражданство
+public:
+    void addDirector(string directorName) {
+        directors[directorName] = {};
+    }
+
+    void removeDirector(string directorName) {
+        directors.erase(directorName);
+        citizens.erase(directorName);
+    }
+
+    void addFilm(string directorName, string filmName) {
+        directors[directorName].push_back(filmName);
+    }
+
+    void removeFilm(string directorName, string filmName) {
+        directors[directorName].erase(remove(directors[directorName].begin(), directors[directorName].end(), filmName), directors[directorName].end());
+    }
+
+    void updateFilm(string directorName, string oldFilmName, string newFilmName) {
+        replace(directors[directorName].begin(), directors[directorName].end(), oldFilmName, newFilmName);
+    }
+
+    void updateCitizens(string directorName, string newCitizens) {
+        citizens[directorName] = newCitizens;
+    }
+
+    void updateAuthorship(string filmName, string oldDirectorName, string newDirectorName) {
+        removeFilm(oldDirectorName, filmName);
+        addFilm(newDirectorName, filmName);
+    }
+
+    vector<string> getFilmsByDirector(string directorName) {
+        return directors[directorName];
+    }
+};
