@@ -12,203 +12,81 @@
 #include <stack>
 using namespace std;
 
-ifstream in("input.txt");
-ofstream out("output.txt");
 
 
-class staack
-{
-	struct element
-	{
-		int inf;
-		element* next;
-		element(int x, element* p) : inf(x), next(p) {}
-	};
-	element* head;
-
+class LinkedList {
+    struct Node {
+        int data; 
+        Node* next; 
+        Node(int data = 0, Node* next = nullptr) : data(data), next(next) {}
+    };
+    Node* head; 
 public:
-	staack() :head(0)
-	{}
-	bool empty()
-	{
-		return head == 0;
-	}
-	int pop()
-	{
-		if (empty())
-		{
-			return 0;
-		}
-		element* r = head;
-		int i = r->inf;
-		head = r->next;
-		delete r;
-		return i;
-	}
-	void push(int data)
-	{
-		head = new element(data, head);
-	}
-	int top()
-	{
-		if (empty())
-		{
-			return 0;
-		}
-		else
-		{
-			return head->inf;
-		}
-	}
+    LinkedList() : head(nullptr) {}
+    ~LinkedList() {
+        while (head) {
+            Node* tmp = head;
+            head = head->next;
+            delete tmp;
+        }
+    }
+
+   
+    void add(int data) {
+        head = new Node(data, head);
+    }
+
+    
+    void print() const {
+        for (Node* node = head; node; node = node->next) {
+            cout << node->data << " ";
+        }
+        cout << endl;
+    }
+
+    
+    int count_pairs() const {
+        int count = 0;
+        for (Node* node = head; node && node->next; node = node->next) {
+            if (node->data == node->next->data) {
+                ++count;
+            }
+        }
+        return count;
+    }
+
+   
+    void remove_duplicates() {
+        for (Node* node = head; node && node->next;) {
+            if (node->data == node->next->data) {
+                Node* tmp = node->next;
+                node->next = tmp->next;
+                delete tmp;
+            }
+            else {
+                node = node->next;
+            }
+        }
+    }
 };
 
 
 
+int main() {
+    LinkedList list;
+    list.add(3);
+    list.add(2);
+    list.add(2);
+    list.add(1);
+    list.add(1);
+    list.add(1);
+    list.add(0);
+    list.print();
 
+    int pairs_count = list.count_pairs();
+    cout << pairs_count << endl;
 
+    list.remove_duplicates();
+    list.print();
 
-class list
-{
-	struct element
-	{
-		int inf;
-		element* next;
-		element(int x) :inf(x), next(0) {}
-	};
-	int count = 0;
-	element* head;
-	int size;
-	element* findx(int x)
-	{
-		element* cur = head;
-		for (int i = 1; i < size; i++)
-		{
-			if (cur->inf == x)
-			{
-				return cur;
-			}
-			cur = cur->next;
-		}
-	}
-	element* find(int index)
-	{
-		if ((index < 0) || (index > size))
-		{
-			return nullptr;
-		}
-		else
-		{
-			element* cur = head;
-			for (int i = 1; i < index; i++)
-			{
-				cur = cur->next;
-			}
-			return cur;
-		}
-	}
-public:
-	list() :head(0), size(0) {}
-	bool empty()
-	{
-		return head == 0;
-	}
-	int getlength()
-	{
-		return size;
-	}
-	int getx(int x)
-	{
-		element* r = findx(x);
-		int i = r->inf;
-		return i;
-	}
-	int get(int index)
-	{
-		element* r = find(index);
-		int i = r->inf;
-		return i;
-	}
-	void insert(int index, int data)
-	{
-		element* newptr = new element(data);
-		size = getlength() + 1;
-		if (index == 1)
-		{
-			newptr->next = head;
-			head = newptr;
-		}
-		else
-		{
-			element* prev = find(index - 1);
-			newptr->next = prev->next;
-			prev->next = newptr;
-		}
-	}
-	void remove(int index)
-	{
-		element* cur;
-		--size;
-		if (index == 1)
-		{
-			cur = head;
-			head = head->next;
-		}
-		else
-		{
-			element* prev = find(index - 1);
-			cur = prev->next;
-			prev->next = cur->next;
-		}
-		cur->next = nullptr;
-		delete cur;
-	}
-	void print()
-	{
-		for (element* cur = head; cur != nullptr; cur = cur->next)
-		{
-			out << cur->inf << ' ';
-		}
-		out << endl;
-	}
-};
-
-
-
-
-
-
-
-
-
-
-
-int main()
-{
-	list ls;
-	int a;
-	int c = 0;
-	int value;
-	in >> a;
-	int* arr = new int[a];
-	while (in >> value)
-	{
-		ls.insert(ls.getlength() + 1, value);
-	}
-	in.close();
-	for (int i = 0; i < ls.getlength(); i++)
-	{
-		if (ls.get(i) == ls.get(i + 1))
-		{
-			arr[c] = ls.get(i);
-			cout << i << ' ' << ls.get(i);
-			c++;
-			cout << endl;
-		}
-	}
-	for (int i = 1; i < c; i++)
-	{
-		ls.remove(arr[i]);
-	}
-	ls.print();
-	out << c;
 }
