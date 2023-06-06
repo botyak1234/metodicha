@@ -14,10 +14,10 @@ using namespace std;
 
 int rek(int* a, int n, int &m)
 {
-	if (n > 0)
+	if (n > 0)//условие выхода из рекурсии
 	{
-		if (a[n - 1] > m ) m = a[n - 1];
-		return rek(a, n - 1, m);
+		if (a[n - 1] > m ) m = a[n - 1];//поиск максимального
+		return rek(a, n - 1, m);//вызов функции самой себя, то есть вызов рекурсии
 	}
 	return m;
 }
