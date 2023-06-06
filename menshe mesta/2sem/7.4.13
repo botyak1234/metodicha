@@ -17,7 +17,7 @@ int main()
 {
 	string s;
 	getline(cin, s);
-	int chislo = abs(stoi(s));
+	int chislo = abs(stoi(s)); //перевод из string в int
 	int sum = 0;
 	while (chislo)
 	{
@@ -27,3 +27,9 @@ int main()
 	cout << sum;
 }
 	
+/*
+ввод
+156911
+вывод
+22
+*/
