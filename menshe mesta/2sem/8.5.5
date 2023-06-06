@@ -11,7 +11,7 @@
 #include <vector>
 using namespace std;
 
-template <typename T> double sred(T* a, int n)
+template <typename T> double sred(T* a, int n)//шаблон функция вычисления среднего значения элементов массива где типом данных есть T
 {
 	T s = 0;
 	for (int i = 0; i < n; i++)
@@ -21,12 +21,12 @@ template <typename T> double sred(T* a, int n)
 	return s / (double)n;
 }
 
-template <typename T> void vvod(T* a, int n)
+template <typename T> void vvod(T* a, int n)//шаблон функция ввода массива
 {
 	for (int i = 0; i < n; i++) cin >> a[i];
 }
 
-template <typename T> void vivod(T* a, int n)
+template <typename T> void vivod(T* a, int n)//шаблон функция вывода массива
 {
 	for (int i = 0; i < n; i++)
 	{
@@ -44,3 +44,11 @@ int main()
 	cout << sred(a, n) << endl;
 	cout << sred(b, n) << endl;
 }
+/*
+5
+0.51 5.123 12.2 1.0 3.5 - массив вещественых чисел
+1 2 3 4 5 - массив целых чисел
+4.4666 - среднее значение массива вещественных чисел
+3 - среднее значение массива целых чисел
+*/
+
