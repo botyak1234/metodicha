@@ -15,7 +15,7 @@
 using namespace std;
 
 
-
+//QUICKSORT
 
 
 int partition(int *a, int start, int end)
@@ -65,9 +65,9 @@ void quicksort(int *a, int start, int end)
 }
 
 
-void sortColumns(int** matrix, int n) 
-{
-    for (int i = 0; i < n; i++) 
+void sortColumns(int** matrix, int n) //вместо quicksort можно 
+{                                     //использовать heapsort 
+    for (int i = 0; i < n; i++)       //и ничего не изменится
     {
         int* col = new int[n];
         for (int j = 0; j < n; j++) 
@@ -121,3 +121,23 @@ int main()
     }
     delete[] matrix;
 }
+
+/*
+4
+
+2 4 3 6
+0 7 2 1
+3 3 3 3
+1 6 2 1
+
+
+3 7 3 6
+2 6 3 3
+1 4 2 1
+0 3 2 1
+
+*/
+
+
+
+
