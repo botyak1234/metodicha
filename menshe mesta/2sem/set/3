@@ -46,7 +46,7 @@ int main()
         }
     }
     set_intersection(povest.begin(), povest.end(), voskl.begin(), voskl.end(), inserter(cho_to, cho_to.begin()));//затем пересекаю
-    cout << size(cho_to) << endl;
+    out << size(cho_to) << endl;
     for (auto it = cho_to.begin(); it != cho_to,end(); ++it) 
     {
         out << *it << ' ' << endl;
