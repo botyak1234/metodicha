@@ -34,14 +34,17 @@ int obratno(int x)
 	cout << '!' << endl;
 	return x1 * 100 + x2 * 10 + x3;
 }
-
+/*
+для задачи а) использую список, т.к. вставка в списке происходит за O(1), а задачу б) вектором, т.к. обращение к элементам происходи за O(1). 
+В итоге, сложность той и другой задачи составляет O(n)
+*/
 
 int main()
 {
 	int value;
 	int n; cin >> n;
-	vector<int> a;
-	list<int> b;
+	list<int> a;
+	vector<int> b;
 	for (int i = 0; i < n; i++)
 	{
 		cin >> value;
@@ -63,13 +66,23 @@ int main()
 	b.push_front(obratno(x3));
 	b.erase(iter);
 	b.push_back(obratno(x4));
-	for (auto it = a.begin(); it != a.end(); it++)
+	for (auto it = b.begin(); it != b.end(); it++)
 	{
-		cout << *it << ' ';
+		cout << *iter << ' ';
 	}
 	cout << endl;
-	for (iter = b.begin(); iter != b.end(); iter++)
+	for (iter = a.begin(); iter != a.end(); iter++)
 	{
 		cout << *iter << ' ';
 	}
 }
+
+
+
+/*
+5
+123 21314 5 543634 123
+
+123 21314 0 5 0 543634 123
+321 21314 5 543634 321
+*/
