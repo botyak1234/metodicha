@@ -19,37 +19,140 @@ private:
     map<string, vector<string>> directors; // ключ - режиссер, значение - список его фильмов
     map<string, string> citizens; // ключ - режиссер, значение - его гражданство
 public:
-    void addDirector(string directorName) {
+    void addDirector(string directorName) {//добавление режиссёра
         directors[directorName] = {};
     }
 
-    void removeDirector(string directorName) {
+    void removeDirector(string directorName) {//удаление режиссёра
         directors.erase(directorName);
         citizens.erase(directorName);
     }
 
-    void addFilm(string directorName, string filmName) {
+    void addFilm(string directorName, string filmName) {//добавление фильма режиссёру
         directors[directorName].push_back(filmName);
     }
 
-    void removeFilm(string directorName, string filmName) {
+    void removeFilm(string directorName, string filmName) {//удаление фильма у режиссёра
         directors[directorName].erase(remove(directors[directorName].begin(), directors[directorName].end(), filmName), directors[directorName].end());
     }
 
-    void updateFilm(string directorName, string oldFilmName, string newFilmName) {
+    void updateFilm(string directorName, string oldFilmName, string newFilmName) {//изменение названия фильма
         replace(directors[directorName].begin(), directors[directorName].end(), oldFilmName, newFilmName);
     }
 
-    void updateCitizens(string directorName, string newCitizens) {
+    void updateCitizens(string directorName, string newCitizens) {//изменение гражданства
         citizens[directorName] = newCitizens;
     }
 
-    void updateAuthorship(string filmName, string oldDirectorName, string newDirectorName) {
+    void updateAuthorship(string filmName, string oldDirectorName, string newDirectorName) {//изменение авторства
         removeFilm(oldDirectorName, filmName);
         addFilm(newDirectorName, filmName);
     }
 
     vector<string> getFilmsByDirector(string directorName) {
-        return directors[directorName];
+        return directors[directorName];//название фильма по режиссёру
     }
+
+    string getCitizens(string directorName) {
+        return  citizens[directorName];
+    }
+
 };
+
+
+
+
+int main() {
+    FilmCatalog catalog;
+    catalog.addFilm("Steven Spielberg", "Jaws");
+    catalog.addFilm("Steven Spielberg", "Jurassic Park");
+
+    vector<string> films = catalog.getFilmsByDirector("Steven Spielberg");
+    for (int i = 0; i < films.size(); i++) 
+    {
+        cout << films[i] << endl;
+    }
+    cout << endl;
+    catalog.addFilm("Christopher Nolan", "The Dark Knight");
+    catalog.addFilm("Christopher Nolan", "Inception");
+
+
+    catalog.addFilm("Quentin Tarantino", "Pulp Fiction");
+    catalog.addFilm("Quentin Tarantino", "Kill Bill: Vol. 1");
+    catalog.addFilm("Quentin Tarantino", "Kill Bill: Vol. 2");
+
+
+    vector<string> movies = catalog.getFilmsByDirector("Quentin Tarantino");
+    for (int i = 0; i < films.size(); i++)
+    {
+        cout << movies[i] << endl;
+    }
+    cout << endl;
+    catalog.removeFilm("Quentin Tarantino", "Kill Bill: Vol. 2");
+
+    vector<string> movies = catalog.getFilmsByDirector("Quentin Tarantino");
+    for (int i = 0; i < films.size(); i++)
+    {
+        cout << movies[i] << endl;
+    }
+    cout << endl;
+    vector<string> film = catalog.getFilmsByDirector("Christopher Nolan");
+    for (int i = 0; i < films.size(); i++)
+    {
+        cout << film[i] << endl;
+    }
+
+
+    catalog.updateFilm("Christopher Nolan", "Inception", "The Hateful Eight");
+    vector<string> film = catalog.getFilmsByDirector("Christopher Nolan");
+    for (int i = 0; i < films.size(); i++)
+    {
+        cout << film[i] << endl;
+    }
+    catalog.updateAuthorship("The Hateful Eight", "Christopher Nolan", "Quentin Tarantino");
+    vector<string> movies = catalog.getFilmsByDirector("Quentin Tarantino");
+    for (int i = 0; i < films.size(); i++)
+    {
+        cout << movies[i] << endl;
+    }
+
+
+
+    catalog.updateCitizens("Quentin Tarantino", "Russian");
+    cout << catalog.getCitizens("Quentin Tarantino") << endl;
+    catalog.updateCitizens("Quentin Tarantino", "USA");
+    cout << catalog.getCitizens("Quentin Tarantino") << endl;
+
+
+}
+
+
+/*
+Jaws
+Jurassic Park
+
+Pulp Fiction
+Kill Bill: Vol. 1
+Kill Bill: Vol. 2
+
+Pulp Fiction
+Kill Bill: Vol. 1
+
+The Dark Knight
+Inception
+
+The Dark Knight
+The Hateful Eight
+
+Pulp Fiction
+Kill Bill: Vol. 1
+The Hateful Eight
+
+Russian
+USA
+
+
+*/
+
+
+
