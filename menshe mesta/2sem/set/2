@@ -22,8 +22,8 @@ int main()
     ofstream out("output.txt");
     int n; 
     cin >> n;
-    vector <set<int>> array;
-    vector<int> itog;
+    vector <set<int>> array;//использую вектор множеств, чтобы пересечь каждое друг с другом
+    vector<int> itog; //так я и получу цифры, которые встречаются в каждой строке
     string line;
 
     while (getline(in, line))
@@ -44,3 +44,11 @@ int main()
         out << *it << ' ';
     }
 }
+
+/*
+gfdjhdk 656 23 hgjk2 njkcv
+privet2 3kak dela
+d6 15 87871
+
+2 3
+*/
