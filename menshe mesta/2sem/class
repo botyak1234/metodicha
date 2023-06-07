@@ -14,117 +14,130 @@ using namespace std;
 ifstream in("input.txt");
 ofstream out("output. txt");
 
-class novoe
-{
+class IntArray {
 private:
-	int* IntArray;
+    int* data; 
+    int size; 
+
 public:
-	int n;
-	novoe() {}
-	/*novoe(int n)
+    
+    IntArray() : data(nullptr), size(0) {}
+    IntArray(int size) : size(size) {
+        data = new int[size];
+    }
+    ~IntArray() {
+        delete[] data;
+    }
+
+   
+    void input() {
+        for (int i = 0; i < size; i++) 
+        {
+            cin >> data[i];
+        }
+    }
+
+    void output() {
+        for (int i = 0; i < size; i++) {
+            cout << data[i] << " ";
+        }
+        cout << endl;
+    }
+
+    void sort() {
+        for (int i = 0; i < size - 1; i++) 
+        {
+            for (int j = i + 1; j < size; j++) 
+            {
+                if (data[i] > data[j]) 
+                {
+                    int temp = data[i];
+                    data[i] = data[j];
+                    data[j] = temp;
+                }
+            }
+        }
+    }
+
+    int getSize() const 
+    {
+        return size;
+    }
+
+    int sum() const {
+        int sum = 0;
+        for (int i = 0; i < size; i++) 
+        {
+            sum += data[i];
+        }
+        return sum;
+    }
+
+    int& operator[](int index) 
+    {
+        return data[index];
+    }
+
+    IntArray operator*(int scalar) const
+    {
+        IntArray result(size);
+        for (int i = 0; i < size; i++) 
+        {
+            result[i] = data[i] * scalar;
+        }
+        return result;
+    }
+
+    IntArray& operator++() {
+        for (int i = 0; i < size; i++) 
+        {
+            data[i]++;
+        }
+        return *this;
+    }
+
+	IntArray operator ++(int) 
 	{
-		IntArray = new int[n];
-	}*/
-	void resize(int n)
-	{
-		IntArray = new int[n];
+        IntArray temp(*this);
+		for (int i = 0; i < size; i++) data[i]++;
+	    return temp;
 	}
-	/*void operator ++()
-	{
-		for (int i = 0; i < n; i++) ++IntArray[i];
-	}
-	novoe operator ++(int)
-	{
-		MyClass temp(*this);
-		for (int i = 0; i < n; i++) ++IntArray[i];
-		return temp
-	}*/
-	void operator *(int scalyar)
-	{
-		for (int i = 0; i < n; i++) IntArray[i] *= scalyar;
-	}
-	/*void operator == (int* arr)
-	{
-		for (int i = 0; i < n; i++)
-		{
-			arr[i] = IntArray[i];
-		}
-	}*/
-	void vvod()
-	{
-		cin >> n;
-		for (int i = 0; i < n; i++) cin >> IntArray[i];
-	}
-	void vivod(int n)
-	{
-		for (int i = 0; i < n; i++) cout << IntArray[i] << ' ';
-		cout << endl;
-	}
-	void sortirovka(int n)
-	{
-		int lowkey;
-		int lowkeyint;
-		int lowindex;
-		for (int i = 0; i < n - 1; i++)
-		{
-			lowindex = i;
-			lowkey = IntArray[i];
-			for (int j = i + 1; j < n; j++)
-			{
-				if (IntArray[j] < lowkey)
-				{
-					lowkey = IntArray[j];
-					lowindex = j;
-				}
-			}
-			swap(IntArray[i], IntArray[lowindex]);
-		}
-	}
-	int razmer()
-	{
-		return sizeof(IntArray);
-	}
-	double summa(int n)
-	{
-		int s = 0;
-		for (int i = 0; i < n; i++) s += IntArray[i];
-		return s;
-	}
+	
 };
 
 
 
 int main()
 {
-	int a; cin >> a;
-	novoe* arr = new novoe[a];
+    int a; cin >> a;
+    
+    IntArray arr(a);
+    
+    arr.input();
+	
+    IntArray result = arr * 2;
+	
+    result.output();
+	
+    IntArray newarr(a) = arr++;
 
-	for (int i = 0; i < a; i++)
-	{
-		arr[i].resize(a);
-	}
-	for (int i = 0; i < a; i++)
-	{
-		arr[i].vvod();
-		arr[i].vivod(arr[i].n);
-	}
+    arr.output();
+    newarr.output();
 
-	/*novoe f;
-	cin >> f.n;
-	f.vvod();
-	novoe ff = f;
-	ff.vivod(ff.n);*/
+    ++arr;
 
-
-
-
-	//novoe firstObject;
-	//firstObject.n = a;
-	//firstObject.vvod(firstObject.n);
-	//firstObject.sortirovka(firstObject.n);
-	//++firstObject;
-	//int* a = new int[firstObject.n];
-	///*firstObject = a;*/
-	////firstObject * 2;
-	//firstObject.vivod(firstObject.n);
+    arr.output();
 }
+
+/*
+5
+1 1 1 1 1
+
+2 2 2 2 2
+1 1 1 1 1
+2 2 2 2 2
+2 2 2 2 2
+*/
+
+
+
