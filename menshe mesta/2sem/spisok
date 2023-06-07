@@ -32,12 +32,12 @@ public:
     }
 
    
-    void add(int data) {
+    void add(int data) {//функция добавления элемента в конец
         head = new Node(data, head);
     }
 
     
-    void print() const {
+    void print() const {//функция вывода списка
         for (Node* node = head; node; node = node->next) {
             cout << node->data << " ";
         }
@@ -45,7 +45,7 @@ public:
     }
 
     
-    int count_pairs() const {
+    int count_pairs() const {//функция подсчёта пар
         int count = 0;
         for (Node* node = head; node && node->next; node = node->next) {
             if (node->data == node->next->data) {
@@ -56,7 +56,7 @@ public:
     }
 
    
-    void remove_duplicates() {
+    void remove_duplicates() {//функция удаления повторяющихся элементов
         for (Node* node = head; node && node->next;) {
             if (node->data == node->next->data) {
                 Node* tmp = node->next;
@@ -90,3 +90,11 @@ int main() {
     list.print();
 
 }
+
+
+
+/*
+0 1 1 1 2 2 3
+3
+0 1 2 3
+*/
