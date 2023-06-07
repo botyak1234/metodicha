@@ -17,30 +17,35 @@ struct Point {
 
 bool inSquare(const Point& p) 
 {
-    return p.x >= -5 && p.x <= 5 && p.y >= -5 && p.y <= 5;
+    return p.x >= -5 && p.x <= 5 && p.y >= -5 && p.y <= 5; // находится ли точка в квадрате 
 }
 
 
-bool below(const Point& p) 
+bool below(const Point& p) // ниже ли оси Oy
 {
     return p.y < 0;
 }
 
-bool inFourthQuadrant(const Point& p) 
+bool inFourthQuadrant(const Point& p) // четвёртая четверть
 {
-    return p.x > 0 && p.y > 0;
+    return p.x > 0 && p.y > 0; 
 }
 
-bool distance(const Point& p1, const Point& p2)
+bool distance(const Point& p1, const Point& p2) //расстояние до начала координат
 {
-    return sqrt(p1.x * p1.x + p1.y * p1.y < p2.x* p2.x + p2.y * p2.y);
+    return sqrt(p1.x * p1.x + p1.y * p1.y < p2.x* p2.x + p2.y * p2.y); 
 }
 
 
 int main()
 {
     vector<Point> points = { {1, 2}, {3, 4}, {-6, 8}, {0, -3}, {4, -2} };
-    
+    for (int i = 0; i < size(points); i++)
+    {
+        cout << points[i].x << ' ' << points[i].y;
+        cout << endl;
+    }
+    cout << endl;
     points.erase(remove_if(points.begin(), points.end(), inSquare));
 
     int count = count_if(points.begin(), points.end(), below);
@@ -49,3 +54,18 @@ int main()
 
     sort(points.begin(), points.end(), distance);
 }
+/*
+1 2 
+3 4 
+0 -3
+4 -2
+
+2
+
+3 4
+
+1 2
+0 -3
+4 -2
+3 4
+*/
