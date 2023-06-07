@@ -21,30 +21,31 @@ private:
 
 public:
     
-    IntArray() : data(nullptr), size(0) {}
-    IntArray(int size) : size(size) {
+    IntArray() : data(nullptr), size(0) {}//начальный конструктор 
+    IntArray(int size) : size(size) { //конструктор выделения 
         data = new int[size];
     }
     ~IntArray() {
-        delete[] data;
+        delete[] data;//деструктор
+	
     }
 
    
-    void input() {
+    void input() {//функция ввода
         for (int i = 0; i < size; i++) 
         {
             cin >> data[i];
         }
     }
 
-    void output() {
+    void output() {//функция вывода
         for (int i = 0; i < size; i++) {
             cout << data[i] << " ";
         }
         cout << endl;
     }
 
-    void sort() {
+    void sort() {//сортировка 
         for (int i = 0; i < size - 1; i++) 
         {
             for (int j = i + 1; j < size; j++) 
@@ -59,12 +60,12 @@ public:
         }
     }
 
-    int getSize() const 
+    int getSize() const //размерность
     {
         return size;
     }
 
-    int sum() const {
+    int sum() const {//сумма
         int sum = 0;
         for (int i = 0; i < size; i++) 
         {
@@ -73,12 +74,12 @@ public:
         return sum;
     }
 
-    int& operator[](int index) 
+    int& operator[](int index) //перегрузка для обращения по индексу
     {
         return data[index];
     }
 
-    IntArray operator*(int scalar) const
+    IntArray operator*(int scalar) const//перегрузка для умножения на скаляр
     {
         IntArray result(size);
         for (int i = 0; i < size; i++) 
@@ -88,7 +89,7 @@ public:
         return result;
     }
 
-    IntArray& operator++() {
+    IntArray& operator++() {//перегрузка префиксного инкремента
         for (int i = 0; i < size; i++) 
         {
             data[i]++;
@@ -96,7 +97,7 @@ public:
         return *this;
     }
 
-	IntArray operator ++(int) 
+	IntArray operator ++(int) //перегрузка постфиксного инкремента
 	{
         IntArray temp(*this);
 		for (int i = 0; i < size; i++) data[i]++;
@@ -115,18 +116,19 @@ int main()
     
     arr.input();
 	
-    IntArray result = arr * 2;
+    IntArray result = arr * 2;//
 	
-    result.output();
+    result.output();//вывод массива после умножения на скаляр
 	
-    IntArray newarr(a) = arr++;
+    IntArray newarr(a) = arr++;//постфиксный инкремент
 
-    arr.output();
-    newarr.output();
+    arr.output();//вывод изначального массива после постфисного инкремента
+    newarr.output();//вывод нового массива после постфикного инкремента
 
-    ++arr;
+    ++arr;//префиксный инкремент
 
-    arr.output();
+    arr.output();//вывод нового массива после префиксного инкремента
+    
 }
 
 /*
