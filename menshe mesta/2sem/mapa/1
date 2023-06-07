@@ -14,7 +14,7 @@
 using namespace std;
 
 
-bool is_number(const string& s) 
+bool is_number(const string& s) //проверка слова на число
 {
     for (char c : s) 
     {
@@ -29,7 +29,7 @@ bool is_number(const string& s)
 
 int main() {
     ifstream in("input.txt");
-    map<int, vector<int>> positions;
+    map<int, vector<int>> positions;//создаю словарь, где ключом является число, а значением вектор позиций этого числа
     string line;
     while (getline(in, line)) 
     {
@@ -38,7 +38,7 @@ int main() {
         int position = 1;
         while (iss >> word) 
         {
-            if (is_number(word))
+            if (is_number(word))//если слово число, то по ключу добавляю его позицию
             {
                 int number = stoi(word);
                 positions[number].push_back(position);
@@ -57,3 +57,16 @@ int main() {
         cout << endl;
     }
 }
+
+/*
+pgd321h 23 teshb h 456123 pr6567 23 456123 0 0 0 kek 1 
+
+0
+9 10 11
+1
+13
+23
+2 7
+456123
+5 8
+*/
