@@ -26,23 +26,23 @@ public:
     {
         top = NULL;
     }
-    void push(int value) {
+    void push(int value) { //функция добавления элемента в вершину
         Node* newNode = new Node;
         newNode->data = value;
         newNode->next = top;
         top = newNode;
     }
-    bool empty()
+    bool empty()//проверка стэка на пустоту
     {
         return top == 0;
     }
        
-    int TOP()
+    int TOP()//просмотр элемента в вершине стэка
     {
-        if (!empty()) top->data;
+        if (!empty()) return top->data;
     }
 
-    int pop() 
+    int pop()//взятие элемента из вершины
     {
         if (top == NULL) {
             cout << "Stack is empty" << endl;
@@ -55,7 +55,7 @@ public:
             return i;
         }
     }
-    void display() 
+    void display() //вывод стэка
     {
         Node* temp = top;
         while (temp != NULL) {
@@ -85,3 +85,9 @@ int main() {
     }
     s2.display();
 }
+
+/*
+0 1 1 1 2 2 3
+3
+0 1 2 3
+*/
